@@ -5,8 +5,11 @@
 #include <stdlib.h>
 #include "../libft/libft.h"
 #include <stdio.h>
+#ifndef BUFF_SIZE
+# define BUFF_SIZE 4096
+#endif
 
-typedef struct		s_struct
+typedef	struct		s_struct
 {
 	char			*tmp;
 	char			*cp_format;
@@ -16,20 +19,27 @@ typedef struct		s_struct
 	void			*t_void;
 }					t_struct;
 
+typedef	struct		s_print
+{
+	char	text[BUFF_SIZE];
+	int		i;
+	int		j;
+}					t_print;
+
 typedef	struct		s_bool
 {
-	int sharp		: 1;
-	int zero		: 1;
-	int neg			: 1;
-	int pos			: 1;
-	int space		: 1;
-	int h;
-	int l;
-	int j			: 1;
-	int z			: 1;
-	int point;
-	int width;
-}					b_bool;
+	int	sharp	:	1;
+	int	zero	:	1;
+	int	neg		:	1;
+	int	pos		:	1;
+	int	space	:	1;
+	int	j		:	1;
+	int	z		:	1;
+	int	h;
+	int	l;
+	int	point;
+	int	width;
+}					t_bool;
 
 int				ft_printf(const char *format, ...);
 int				ft_putstr_f(char const *s);
