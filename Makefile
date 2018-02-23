@@ -12,7 +12,7 @@ DIR_O = temporary
 
 HEADER = include
 
-SOURCES = ft_printf.c ft_putstr_f.c ft_itoa_f.c ft_check_flag.c
+SOURCES = ft_printf.c ft_putstr_f.c ft_itoa_f.c check_flag.c
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 

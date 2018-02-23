@@ -6,88 +6,87 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:40:23 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/02/23 12:40:36 by rojaguen         ###   ########.fr       */
+/*   Updated: 2018/02/23 21:18:14 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../include/ft_printf.h"
 
-int ft_if_forest(char c, const char *format, va_list ap,  t_struct *tmp)
+int if_forest(char c, va_list ap, t_bool bool_tab, t_print res)
 {
 	int count;
 
 	count = 0;
+	printf("j2 = %d\n",res.j);
 	if (c == 's')
-		count = ft_stock_s(format,ap,tmp);
-//	else if (c == 'd')
+	{
+		write (1, "A", 1);
+		count = stock_s(ap,res,bool_tab);
+	}
+/*	else if (c == 'd' || c == 'i')
+		ft_stock_d
 
 	else 
-		return (-1);
+		return (-1);*/
 	return (count);
 }
 
 
-int		distrib(const char *format, va_list ap, int *i, t_struct *tmp)
+int		distrib(const char *str, va_list ap, t_print res)
 {
-	int a;
-	int count;
-	char c;
+	t_bool	bool_tab;
 
-	count = 0;
-	while (!(format[*i] >= 97 && format[*i] <= 122))
+	res.save_i = res.j;
+	if (str[res.j] == '%')
 	{
-		(*i)++;
-		if (format[*i] >= 97 && format[*i] <= 122)
-			c = format[*i];
+		res.buf[res.i] = '%';
+		res.i++;
+		return (0);
 	}
-	if (!c)
-		return (-1);
-	else
-		if ((count = ft_if_forest(c,format,ap,tmp)) == -1)
-			return (-1);
-//	printf("c = %c\n",c);
-	return (count);
+	bool_tab = init_bool(bool_tab);
+	while (bool_tab.check == 0 && str[res.j])
+	{
+		bool_tab = check_flag(str, bool_tab, res, 0);
+		res.j++;
+	}
+	if (bool_tab.check == -1)
+		return (0);
+	if (bool_tab.h > 0)
+		bool_tab.h = (bool_tab.h % 2) + 1;// si resultat vaut 1 => pair donc == hh, si resultat vaut 2 => impair donc  == h
+	if (bool_tab.l > 0)
+		bool_tab.l = (bool_tab.l %  2) + 1;// si resultat vaut 1 => pair donc == ll, si resultat vaut 2 => impair donc  == l
+	stock_s(ap,res,bool_tab);
+//	if ((if_forest(str[res.j],ap,bool_tab,res)) == -1)
+//			return (-1);
+	return (0);
 }
 
-int		ft_printf(const char *format, ...)
+int		ft_printf(const char *str, ...)
 {
-	va_list ap;
-	va_start(ap, format);
-	int i = 0;
-	int count;
-	t_struct	tmp;
+	va_list		ap;
+	t_print		res;
 
-	count = 0;
-	if (!format)
+	if (!str)
 		return(0);
-	while (format[i])
+	res.i = 0;
+	res.j = 0;
+	va_start(ap, str);
+	ft_bzero(res.buf, BUFF_SIZE);
+	while (str[res.j])
 	{
-		if (format[i] == '%')
+		if (str[res.j] == '%')
 		{
-			if ((count += distrib(format,ap,&i,&tmp)) == -1)
+			printf("j = %d\n",res.j);
+			res.j++;
+			if ((distrib(str,ap,res)) == -1)// faire en sorte que a fonction renvoi un pointeur sapres le type du '%'
 				return (-1);
 		}
-		else
-		{
-			ft_putchar(format[i]);
-			count++;
-			tmp.cp_format = ft_strdup(format + i);
-		//	printf("\n\ncp = %s\n\n",tmp.cp_format);
-		}
-		i++;
+		else{
+			ft_putchar(str[res.j]);
+			res.buf[res.i++] = str[res.j++];
+			}
 	}
-	free(tmp.cp_format);
 	va_end(ap);
-	return (count);
+	return (res.i);
 }
-
-/*
-void print_adress(unsigned long int nb)
-{
-	if (nb = 0) 
-		ft_putchar("(nil)")
-		return;
-	ft_putchar(0x);
-	ft_itoa_base(nb);
-}*/

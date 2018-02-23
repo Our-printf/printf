@@ -1,0 +1,6 @@
+Seb - 23/02
+- ajout du int check ds struct t_bool pour verifier si il n'y a pas de 'm' ou autres carac a la con, on poura l'utiliser pour d'auatres trucs
+
+-changements de types de plusieurs fonctions
+
+- IMPORTANT : les bites (ouioui) renvoient toujours soit '0' soit '-1'
