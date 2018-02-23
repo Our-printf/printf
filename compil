@@ -1,0 +1,2 @@
+gcc srcs/*.c ../main.c libft/libft.a 
+./a.out
