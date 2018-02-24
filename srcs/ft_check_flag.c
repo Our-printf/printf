@@ -6,7 +6,7 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 20:23:48 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/02/23 21:18:21 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/02/24 20:23:31 by rojaguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,13 @@ t_bool		check_flag(const char *str, t_bool bool_tab, t_print res, int i)
 	arg = "sSpdDioOuUxXcC";
 	while (str[res.j] != arg[i] && arg[i] != '\0')
 		i++;
-//	printf("\n**********\na = %d\n********\n",a);
+//	printf("c = %c",arg[i]);
+
+//	printf("\n*********\na = %d\n********\n",a);
+	if (str[res.j] == arg[i])
+		bool_tab.c = arg[i];
+
+	printf("c = %c",arg[i]);
 	if (arg[i] == '\0')
 	{
 		bool_tab = flag(str,bool_tab,res);

@@ -6,7 +6,7 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:40:23 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/02/23 21:18:14 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/02/24 20:23:28 by rojaguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,13 @@
 
 int if_forest(char c, va_list ap, t_bool bool_tab, t_print res)
 {
-	int count;
+printf ("\nsharp = %d\nzero = %d\nneg = %d\npos = %d\nspace = %d \nj = %d\nz = %d\nh = %d\nl = %d\n\n",bool_tab.sharp, bool_tab.zero, bool_tab.neg, bool_tab.pos, bool_tab.space, bool_tab.j, bool_tab.z, bool_tab.h, bool_tab.l);
 
-	count = 0;
-	printf("j2 = %d\n",res.j);
 	if (c == 's')
-	{
-		write (1, "A", 1);
-		count = stock_s(ap,res,bool_tab);
-	}
-/*	else if (c == 'd' || c == 'i')
-		ft_stock_d
-
-	else 
+		stock_s(ap,res,bool_tab);
+/*	else 
 		return (-1);*/
-	return (count);
+	return (0);
 }
 
 
@@ -47,7 +39,7 @@ int		distrib(const char *str, va_list ap, t_print res)
 	bool_tab = init_bool(bool_tab);
 	while (bool_tab.check == 0 && str[res.j])
 	{
-		bool_tab = check_flag(str, bool_tab, res, 0);
+	bool_tab =	check_flag(str, bool_tab, res, 0);
 		res.j++;
 	}
 	if (bool_tab.check == -1)
@@ -56,9 +48,9 @@ int		distrib(const char *str, va_list ap, t_print res)
 		bool_tab.h = (bool_tab.h % 2) + 1;// si resultat vaut 1 => pair donc == hh, si resultat vaut 2 => impair donc  == h
 	if (bool_tab.l > 0)
 		bool_tab.l = (bool_tab.l %  2) + 1;// si resultat vaut 1 => pair donc == ll, si resultat vaut 2 => impair donc  == l
-	stock_s(ap,res,bool_tab);
-//	if ((if_forest(str[res.j],ap,bool_tab,res)) == -1)
-//			return (-1);
+//	stock_s(ap,res,bool_tab);
+	if ((if_forest(bool_tab.c,ap,bool_tab,res)) == -1)
+			return (-1);
 	return (0);
 }
 
@@ -77,14 +69,16 @@ int		ft_printf(const char *str, ...)
 	{
 		if (str[res.j] == '%')
 		{
-			printf("j = %d\n",res.j);
+	//		printf("j = %d\n",res.j);
 			res.j++;
 			if ((distrib(str,ap,res)) == -1)// faire en sorte que a fonction renvoi un pointeur sapres le type du '%'
 				return (-1);
 		}
-		else{
+		else {
 			ft_putchar(str[res.j]);
-			res.buf[res.i++] = str[res.j++];
+			res.j++;
+//			res.buf[res.i++] = str[res.j++];
+//			printf("%s",res.buf);
 			}
 	}
 	va_end(ap);

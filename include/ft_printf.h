@@ -41,6 +41,7 @@ typedef	struct		s_bool
 	int				width;
 	int				h;
 	int				l;
+	char			c;
 }					t_bool;
 
 int					ft_printf(const char *str, ...);
