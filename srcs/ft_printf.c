@@ -6,17 +6,17 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:40:23 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/02/25 18:48:04 by rojaguen         ###   ########.fr       */
+/*   Updated: 2018/02/25 20:09:10 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../include/ft_printf.h"
 
 int if_forest(char c, va_list ap, t_bool bool_tab, t_print res)
 {
 printf ("\nsharp = %d\nzero = %d\nneg = %d\npos = %d\nspace = %d \nj = %d\nz = %d\nh = %d\nl = %d\n\n",bool_tab.sharp, bool_tab.zero, bool_tab.neg, bool_tab.pos, bool_tab.space, bool_tab.j, bool_tab.z, bool_tab.h, bool_tab.l);
 	
+	printf("\nc = %c", bool_tab.c);
 	if (!c)
 		res.j = res.j - res.save_i;
 	if (c == 's')
@@ -49,6 +49,7 @@ int		distrib(const char *str, va_list ap, t_print res)
 		bool_tab.h = (bool_tab.h % 2) + 1;// si resultat vaut 1 => pair donc == hh, si resultat vaut 2 => impair donc  == h
 	if (bool_tab.l > 0)
 		bool_tab.l = (bool_tab.l %  2) + 1;// si resultat vaut 1 => pair donc == ll, si resultat vaut 2 => impair donc  == l
+//	printf("c = %c", bool_tab.c);
 	if ((if_forest(bool_tab.c,ap,bool_tab,res)) == -1)
 			return (-1);
 	return (0);
