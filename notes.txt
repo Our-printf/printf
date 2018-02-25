@@ -8,3 +8,8 @@ Seb - 23/02
 Bg (aka romain) - 24/02
 
 -Gestion de la recuperation du carac (%d,%s...) pour le passer a if forest
+
+NOTE IMPORTANTES :
+
+- to do : calculer la taille total a appliquer au bufer. Cette taille se base sur l'application
+ des flags aux specifier et au caracters contenus a linterieur. Elle contiendra la taille que vont  faire les flags, +, - etc... plus la string que va-arg pointe. On fera une variable static de la taille calculee. 

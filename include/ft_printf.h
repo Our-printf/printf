@@ -29,20 +29,20 @@ typedef	struct		s_print
 
 typedef	struct		s_bool
 {
-	int				sharp	:	1;
-	int				zero	:	1;
-	int				neg		:	1;
-	int				pos		:	1;
-	int				space	:	1;
-	int				j		:	1;
-	int				z		:	1;
-	int				check;
-	int				point;
-	int				width;
-	int				h;
-	int				l;
-	char			c;
-}					t_bool;
+	unsigned	int		sharp	:	1;
+	unsigned	int		zero	:	1;
+	unsigned	int		neg		:	1;
+	unsigned	int		pos		:	1;
+	unsigned	int		space	:	1;
+	unsigned	int		j		:	1;
+	unsigned	int		z		:	1;
+	int					check;
+	int					point;
+	int					width;
+	int					h;
+	int					l;
+	char				c;
+}						t_bool;
 
 int					ft_printf(const char *str, ...);
 int					ft_putstr_f(char const *s);
