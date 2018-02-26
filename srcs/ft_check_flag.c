@@ -6,7 +6,7 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 20:23:48 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/02/26 18:45:13 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/02/26 19:00:26 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ t_print		flag_relou(const char *str, t_print res)
 {
 	if (str[res.k] == '.')
 	{
-		(res.k)++;
+		res.k++;
 		res.c_bool.point = 0;
 		while (str[res.k] >= '0' && str[res.k] <= '9')
 		{
 			res.c_bool.point = (res.c_bool.point * 10) + (str[res.k] - 48);
-			(res.k)++;
+			res.k++;
 		}
 	}
 	else 
@@ -29,11 +29,11 @@ t_print		flag_relou(const char *str, t_print res)
 		while (str[res.k] >= '0' && str[res.k] <= '9')
 		{
 			res.c_bool.width = (res.c_bool.width * 10) + (str[res.k] - 48);
-			(res.k)++;
+			res.k++;
 		}
 
 	}
-	printf("\n\npt = %d\nweed = %d\nj = %d\n",res.c_bool.point,res.c_bool.width,res.k);
+	res.k--;
 	return (res);
 }
 t_print		flag(const char *str, t_print res)
@@ -67,18 +67,18 @@ t_print		check_flag(const char *str, t_print res, int i)
 {
 	char *arg;
 
-	i = 0;
-//	printf("j2 = %d",res.k);
 	arg = "sSpdDioOuUxXcC";
 	while (str[res.k] != arg[i] && arg[i] != '\0')
 		i++;
+//	printf(	"k = %d i = %d\n",res.k,i);
 	if (str[res.k] == arg[i])
+	{
 		res.c_bool.c = arg[i];
-//	printf("c = %c",arg[i]);
+		res.k++;
+	}
 	if (arg[i] == '\0')
 	{
 
-	printf("j2 = %d\n",res.k);
 		res = flag(str,res);
 		return (res);
 	}
