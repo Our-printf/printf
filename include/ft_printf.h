@@ -19,14 +19,6 @@ typedef	struct		s_struct
 	void			*t_void;
 }					t_struct;
 
-typedef	struct		s_print
-{
-	char			buf[BUFF_SIZE];
-	int				i;
-	int				j;
-	int				save_i;
-}					t_print;
-
 typedef	struct		s_bool
 {
 	unsigned	int		sharp	:	1;
@@ -44,11 +36,20 @@ typedef	struct		s_bool
 	char				c;
 }						t_bool;
 
+typedef	struct		s_print
+{
+	char			buf[BUFF_SIZE];
+	int				i;
+	int				k;
+	int				save_i;
+	t_bool			c_bool;
+}					t_print;
+
+
 int					ft_printf(const char *str, ...);
 int					ft_putstr_f(char const *s);
 int					ft_itoa_f(int n);
-int					stock_s(va_list ap, t_print res, t_bool bool_tab);
-t_bool				check_flag(const char *str, t_bool bool_tab, t_print res, int a);
-t_bool				init_bool(t_bool bool_tab);
-
+int					stock_s(va_list ap, t_print res);
+t_print				check_flag(const char *str, t_print res, int a);
+t_print				init_bool(t_print res);
 #endif

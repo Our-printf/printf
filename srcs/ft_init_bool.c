@@ -1,18 +1,18 @@
 #include "../include/ft_printf.h"
 
-t_bool	init_bool(t_bool bool_tab)
+t_print		init_bool(t_print res)
 {
-	bool_tab.sharp = 0;
-	bool_tab.zero = 0;
-	bool_tab.neg = 0;
-	bool_tab.pos = 0;
-	bool_tab.space = 0;
-	bool_tab.j = 0;
-	bool_tab.z = 0;
-	bool_tab.h = 0;
-	bool_tab.l = 0;
-	bool_tab.point = 0;
-	bool_tab.width = 0;
-	bool_tab.check = 0;
-	return (bool_tab);
+	res.c_bool.sharp = 0;
+	res.c_bool.zero = 0;
+	res.c_bool.neg = 0;
+	res.c_bool.pos = 0;
+	res.c_bool.space = 0;
+	res.c_bool.j = 0;
+	res.c_bool.z = 0;
+	res.c_bool.h = 0;
+	res.c_bool.l = 0;
+	res.c_bool.point = -1;
+	res.c_bool.width = 0;
+	res.c_bool.check = 0;
+	return (res);
 }
