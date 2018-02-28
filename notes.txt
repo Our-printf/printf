@@ -9,6 +9,10 @@ Bg (aka romain) - 24/02
 
 -Gestion de la recuperation du carac (%d,%s...) pour le passer a if forest
 
+
+bg - 28/02
+
+- ajout de la gestion du buffer.
 NOTE IMPORTANTES :
 
 - to do : calculer la taille total a appliquer au bufer. Cette taille se base sur l'application
