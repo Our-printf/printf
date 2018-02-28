@@ -53,4 +53,7 @@ int					ft_itoa_f(int n);
 int					stock_s(va_list ap, t_print res);
 t_print				check_flag(const char *str, t_print res, int a);
 t_print				init_bool(t_print res);
+
+void				test_s(void);
+void				compil_test_s(char *test, int i, int dif);
 #endif
