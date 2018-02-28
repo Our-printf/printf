@@ -6,7 +6,11 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 20:23:48 by rojaguen          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/02/26 19:00:26 by sgarcia          ###   ########.fr       */
+=======
+/*   Updated: 2018/02/28 17:49:09 by sgarcia          ###   ########.fr       */
+>>>>>>> fdd2659fb221f68076b7ba28727bceddc46240cf
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +56,8 @@ t_print		flag(const char *str, t_print res)
 		res.c_bool.z = 1;
 	else if (str[res.k] == 'j')
 		res.c_bool.j = 1;
+	else if (str[res.k] == '%')
+		res.c_bool.percent = 1;
 	else if (str[res.k] == 'h')
 		res.c_bool.h += 1;
 	else if (str[res.k] == 'l')
