@@ -26,6 +26,7 @@ typedef	struct		s_bool
 	unsigned	int		neg		:	1;
 	unsigned	int		pos		:	1;
 	unsigned	int		space	:	1;
+	unsigned	int		percent	:	1;
 	unsigned	int		j		:	1;
 	unsigned	int		z		:	1;
 	int					check;

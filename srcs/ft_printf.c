@@ -6,7 +6,7 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:40:23 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/02/26 18:12:22 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/02/28 17:51:54 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,8 @@ printf ("\nsharp = %d\nzero = %d\nneg = %d\npos = %d\nspace = %d \nj = %d\nz = %
 t_print		distrib(const char *str, va_list ap, t_print res)
 {
 	res.save_i = res.k;
-	if (str[res.k] == '%')
-	{
-		res.buf[res.i] = '%';
-		res.i++;
-		return (res);
-	}
 	while (res.c_bool.check == 0 && str[res.k])
 	{
-//		printf("\n k = %d\n", res.k);
 		res = check_flag(str, res, 0);
 		res.k++;
 	}
