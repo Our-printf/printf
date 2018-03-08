@@ -6,11 +6,8 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:40:23 by rojaguen          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/02/28 20:22:10 by rojaguen         ###   ########.fr       */
-=======
+/*   Updated: 2018/03/07 21:07:47 by rojaguen         ###   ########.fr       */
 /*   Updated: 2018/02/28 17:51:54 by sgarcia          ###   ########.fr       */
->>>>>>> fdd2659fb221f68076b7ba28727bceddc46240cf
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +15,18 @@
 
 t_print		if_forest(char c, va_list ap, t_print res)
 {
+	printf("\n********** BOOL TAB **********\n");
 	printf ("\nsharp = %d\nzero = %d\nneg = %d\npos = %d\nspace = %d \nj = %d\nz = %d\nh = %d\nl = %d\npoint = %d\nweed = %d\n",res.c_bool.sharp, res.c_bool.zero, res.c_bool.neg, res.c_bool.pos, res.c_bool.space, res.c_bool.j, res.c_bool.z, res.c_bool.h, res.c_bool.l, res.c_bool.point, res.c_bool.width);
 	
-	printf("\nc = %c\n", res.c_bool.c);
+	ft_putstr("\n************* END ************\n");
+//	printf("\nc = %c\n", res.c_bool.c);
 //	if (!c)
 //		res.k = res.k - res.save_i;
 	if (c == 's')
 		stock_s(ap,res);
 	if (c == 'd')
 	res =	ft_stock_d(ap,res);
+
 	return (res);
 }
 
@@ -71,11 +71,13 @@ int		ft_printf(const char *str, ...)
 			res.k++;
 			res = init_bool(res);
 			res = distrib(str,ap,res);// faire en sorte que a fonction renvoi un pointeur sapres le type du '%'
+			res.k--;
+		
 		}
 		else 
 		{
 		//	ft_putchar(str[res.k]);
-			res = ft_strcat_f(0,res,str[res.k]);
+			res = ft_strcat_f(0, res, str[res.k]);
 			res.k++;
 		}
 	}

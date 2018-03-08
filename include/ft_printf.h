@@ -24,7 +24,7 @@ typedef	struct		s_bool
 	unsigned	int		sharp	:	1;
 	unsigned	int		zero	:	1;
 	unsigned	int		neg		:	1;
-	unsigned	int		pos		:	1;
+	int					pos;
 	unsigned	int		space	:	1;
 	unsigned	int		percent	:	1;
 	unsigned	int		j		:	1;
@@ -54,14 +54,9 @@ int					stock_s(va_list ap, t_print res);
 t_print				ft_stock_d(va_list ap, t_print res);
 t_print				check_flag(const char *str, t_print res, int a);
 t_print				init_bool(t_print res);
-<<<<<<< HEAD
 t_print				if_forest(char c, va_list ap, t_print res);
 t_print				ft_strcat_f(char *s1, t_print res,char c);
 //int					stock_d(va_list ap, t_print res);
-
-=======
-
 void				test_s(void);
 void				compil_test_s(char *test, int i, int dif);
->>>>>>> fdd2659fb221f68076b7ba28727bceddc46240cf
 #endif

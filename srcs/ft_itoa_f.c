@@ -6,7 +6,7 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 18:11:23 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/02/28 18:25:21 by rojaguen         ###   ########.fr       */
+/*   Updated: 2018/03/01 18:57:16 by rojaguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static	int		ft_nb_digit(int n)
 char			*ft_itoa_f(int n)
 {
 	char	s[11];
+	char	*d;
 	int		i;
 
 	i = ft_nb_digit(n) - 1;
@@ -51,5 +52,6 @@ char			*ft_itoa_f(int n)
 		s[i--] = n % 10 + 48;
 		n = n / 10;
 	}
+	d = s;
 	return (ft_strdup(s));
 }
