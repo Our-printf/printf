@@ -35,6 +35,7 @@ typedef	struct		s_bool
 	int					h;
 	int					l;
 	char				c;
+	unsigned	int		specs	:	1;
 }						t_bool;
 
 typedef	struct		s_print
@@ -59,4 +60,14 @@ t_print				ft_strcat_f(char *s1, t_print res,char c);
 //int					stock_d(va_list ap, t_print res);
 void				test_s(void);
 void				compil_test_s(char *test, int i, int dif);
+
+/* Pour le pourcent d*/
+char				*ft_sign(char *str, t_print res, intmax_t rsl);
+char				*ft_zero(char *str, t_print res);
+int long long		ft_specs(t_print res, int long long va);
+char				*ft_widht(char *str, t_print res);
+t_print				ft_stock_dif(va_list ap, t_print res, int rsl);
+char				*ft_point(char *str, t_print res);
+char				*ft_negatif(char *str, t_print res);
+
 #endif

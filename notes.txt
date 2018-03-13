@@ -15,5 +15,10 @@ bg - 28/02
 - ajout de la gestion du buffer.
 NOTE IMPORTANTES :
 
+13 / 02 romain
+
+-Mise a la "norme" de stock_d ajout de 2 fichiers modif du .h 
+-Ajout d une var bool permetant de cheker si un specs (specifier) est detecte
+
 - to do : calculer la taille total a appliquer au bufer. Cette taille se base sur l'application
  des flags aux specifier et au caracters contenus a linterieur. Elle contiendra la taille que vont  faire les flags, +, - etc... plus la string que va-arg pointe. On fera une variable static de la taille calculee. 

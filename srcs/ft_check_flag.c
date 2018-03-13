@@ -6,7 +6,7 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 20:23:48 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/03/01 17:35:53 by rojaguen         ###   ########.fr       */
+/*   Updated: 2018/03/13 19:02:39 by rojaguen         ###   ########.fr       */
 /*   Updated: 2018/02/28 17:49:09 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -86,5 +86,11 @@ t_print		check_flag(const char *str, t_print res, int i)
 		return (res);
 	}
 	res.c_bool.check = 1;
+	if (res.c_bool.h > 0 || res.c_bool.j ==1 || res.c_bool.z == 1 
+			|| res.c_bool.l > 0)
+		res.c_bool.specs = 1;
+	else 
+		res.c_bool.specs = 0;
+
 	return (res);
 }
