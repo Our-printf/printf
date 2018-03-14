@@ -6,11 +6,11 @@
 /*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 13:29:24 by sgarcia           #+#    #+#             */
-/*   Updated: 2018/02/28 18:50:45 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/03/14 16:10:32 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf/include/ft_printf.h"
+#include "include/ft_printf.h"
 
 int main()
 {
