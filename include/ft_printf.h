@@ -57,8 +57,9 @@ t_print				check_flag(const char *str, t_print res, int a);
 t_print				init_bool(t_print res);
 t_print				if_forest(char c, va_list ap, t_print res);
 t_print				ft_strcat_f(char *s1, t_print res,char c);
-//int					stock_d(va_list ap, t_print res);
+//int				stock_d(va_list ap, t_print res);
 void				test_s(void);
+t_print				check_true(t_print res);
 
 /* Pour le pourcent d*/
 char				*ft_sign(char *str, t_print res, intmax_t rsl);
@@ -68,5 +69,13 @@ char				*ft_widht(char *str, t_print res);
 t_print				ft_stock_dif(va_list ap, t_print res, int rsl);
 char				*ft_point(char *str, t_print res);
 char				*ft_negatif(char *str, t_print res);
+
+/* Pour le pourcent s */
+char				*width_neg(char *copy, char c, int w, int len);
+char				*width_s2(char *copy, char c, int w, int len);
+char				*preci_s(char *tmp, t_print res);
+char				*width_s(char *tmp, t_print res);
+t_print				stock_s(va_list ap, t_print res);
+
 
 #endif

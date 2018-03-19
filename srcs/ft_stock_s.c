@@ -6,37 +6,83 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 00:00:56 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/03/14 15:51:38 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/03/19 14:39:14 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+char	*width_neg(char *copy, char c, int w, int len)
+{
+	int		j;
+	char	*str;
+
+	j = 0;
+	str = ft_memalloc(w);
+	while (copy[j])
+	{
+		str[j] = copy[j];
+		j++;
+	}
+	while (j < w)
+		str[j++] = c;
+	str[j] = '\0';
+	return (str);
+}
+
+char	*width_s2(char *copy, char c, int w, int len)
+{
+	int		i;
+	int		j;
+	char	*str;
+
+	i = 0;
+	j = 0;
+	str = ft_memalloc(w);
+	while (i < (w - len))
+		str[i++] = c;
+	while (copy[j])
+	{
+		str[i + j] = copy[j];
+		j++;
+	}
+	str[i + j] = '\0';
+	return (str);
+}
 
 char		*preci_s(char *tmp, t_print res)
 {
 	int		j;
 
 	j = 0;
-//	printf("COPY2 = %s\n", tmp);
 	while (tmp[j + res.c_bool.point])
 	{
 		tmp[j + res.c_bool.point] = '\0';
 		j++;
 	}
-//	printf("COPY3 = %s\n", tmp);
 	return (tmp);
-
-//	refaire en chengeant directement ds l'adresse de tmp, en envoyant &tmp et 2crivant dedans des \0
 }
 
-t_print		neg_s(char *tmp, t_print res)
+char		*width_s(char *tmp, t_print res)
 {
-	int		i;
+	int		j;
+	int		len;
+	char	*copy;
 
-	i = ft_strlen(tmp);
-	if (i <= res.c_bool.width)
-		return (res);
-	return (res);
+	j = 0;
+	len = ft_strlen(tmp);
+	if (res.c_bool.width < len)
+		return (tmp);
+	if (res.c_bool.neg == 1)
+			copy = width_neg(copy, ' ', res.c_bool.width, len);
+	if (res.c_bool.neg == 0)
+	{
+		if (res.c_bool.zero == 1)
+			copy = width_s2(copy, '0', res.c_bool.width, len);
+		else
+			copy = width_s2(copy, ' ', res.c_bool.width, len);
+	}
+	return (copy);
 }
 
 t_print		stock_s(va_list ap, t_print res)
@@ -53,8 +99,13 @@ t_print		stock_s(va_list ap, t_print res)
 //	printf("COPY = %s\n", copy);
 	if (res.c_bool.point >= 0)
 		copy = preci_s(copy, res);
+	if (res.c_bool.width > 0)
+		copy = width_s(copy, res);
 //	if (res.c_bool.neg == 1)
 //		neg_s(tmp, res);
 	res = ft_strcat_f(copy, res, 0);
+	ft_strdel(&tmp);
+	ft_strdel(&copy);
+//	printf("COPY3 = %s\n", tmp);
 	return (res);
 }

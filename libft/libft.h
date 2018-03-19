@@ -6,7 +6,7 @@
 /*   By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 20:14:57 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/02/20 19:57:31 by rojaguen         ###   ########.fr       */
+/*   Updated: 2018/03/16 19:07:06 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char				*ft_strrchr(const char *s, int c);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strnstr(const char *haystack,
 						const char *needle, size_t len);
-void				*ft_memset(void *b, int c, size_t len);
+char				*ft_memset(char *b, int c, int len);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);

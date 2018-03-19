@@ -1,2 +1,2 @@
-gcc srcs/*.c main.c tests_s.c libft/libft.a
+gcc -Wall -Wextra -Werror srcs/*.c main.c tests_s.c libft/libft.a
 ./a.out
