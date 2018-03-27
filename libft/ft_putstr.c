@@ -6,7 +6,7 @@
 /*   By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 01:12:42 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/03/03 16:54:50 by rojaguen         ###   ########.fr       */
+/*   Updated: 2018/03/20 15:38:59 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ void	ft_putstr(char const *s)
 	i = 0;
 	if (s != NULL)
 	{
-		write(1, s, ft_strlen(s));
-/*		while (s[i])
+		while (s[i])
 		{
 			ft_putchar(s[i]);
 			i++;
 		}
-*/	}
+	}
 }

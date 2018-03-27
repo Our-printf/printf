@@ -12,11 +12,12 @@ DIR_O = temporary
 
 HEADER = include
 
-SOURCES = ft_printf.c ft_putstr_f.c ft_itoa_f.c check_flag.c
+SRCS = ./srcs/ft_check_flag.c srcs/ft_init_bool.c srcs/ft_itoa_f.c srcs/ft_printf.c srcs/ft_stock_s.c srcs/ft_strcat_f.c srcs/ft_stock_c.c #  srcs/ft_stock_d.c srcs/ft_stock_d_ft.c srcs/ft_stock_d_ft2.c 
 
-SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
+#SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 
-OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
+#OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
@@ -26,9 +27,8 @@ $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 
-$(DIR_O)/%.o: $(DIR_S)/%.c
-	@mkdir -p temporary
-	@$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
+%.o: %.c
+	$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
 
 norme:
 	norminette ./libft/
@@ -38,8 +38,7 @@ norme:
 	norminette ./$(DIR_S)/
 
 clean:
-	@rm -f $(OBJS)
-	@rm -rf $(DIR_O)
+	rm -f $(OBJS)
 	@make clean -C $(LIBFT)
 
 fclean: clean

@@ -6,13 +6,13 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 00:00:56 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/03/19 14:39:14 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/03/20 18:22:42 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-char	*width_neg(char *copy, char c, int w, int len)
+char	*width_neg(char *copy, char c, int w)
 {
 	int		j;
 	char	*str;
@@ -71,17 +71,19 @@ char		*width_s(char *tmp, t_print res)
 
 	j = 0;
 	len = ft_strlen(tmp);
+	copy = ft_memalloc(res.c_bool.width);
 	if (res.c_bool.width < len)
 		return (tmp);
 	if (res.c_bool.neg == 1)
-			copy = width_neg(copy, ' ', res.c_bool.width, len);
+		copy = width_neg(tmp, ' ', res.c_bool.width);
 	if (res.c_bool.neg == 0)
 	{
 		if (res.c_bool.zero == 1)
-			copy = width_s2(copy, '0', res.c_bool.width, len);
+			copy = width_s2(tmp, '0', res.c_bool.width, len);
 		else
-			copy = width_s2(copy, ' ', res.c_bool.width, len);
+			copy = width_s2(tmp, ' ', res.c_bool.width, len);
 	}
+	copy[res.c_bool.width] = '\0';
 	return (copy);
 }
 
@@ -91,21 +93,14 @@ t_print		stock_s(va_list ap, t_print res)
 	char	*copy;
 
 	tmp = va_arg(ap, char *);
-/*	printf ("\n sharp = %d \n zero = %d \n neg = %d \n pos = %d \n space= %d \n j = %d \n z = %d \n h = %d \n l =  %d \n\n",res.c_bool.sharp, res.c_bool.zero, res.c_bool.neg, res.c_bool.pos, res.c_bool.space, res.c_bool.j, res.c_bool.z, res.c_bool.h, res.c_bool.l);
-*/
-	if (!tmp)
-		return (res);
+	if (tmp == NULL)
+		tmp = "(null)";
 	copy = ft_strdup(tmp);
-//	printf("COPY = %s\n", copy);
 	if (res.c_bool.point >= 0)
 		copy = preci_s(copy, res);
 	if (res.c_bool.width > 0)
 		copy = width_s(copy, res);
-//	if (res.c_bool.neg == 1)
-//		neg_s(tmp, res);
 	res = ft_strcat_f(copy, res, 0);
-	ft_strdel(&tmp);
 	ft_strdel(&copy);
-//	printf("COPY3 = %s\n", tmp);
 	return (res);
 }
