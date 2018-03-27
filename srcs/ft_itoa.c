@@ -6,13 +6,13 @@
 /*   By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 06:14:41 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/03/21 15:13:13 by rojaguen         ###   ########.fr       */
+/*   Updated: 2018/03/21 18:17:18 by rojaguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/ft_printf.h"
 
-static	int		ft_nb_digit(int n)
+static	int		ft_nb_digit(intmax_t n)
 {
 	int digit;
 
@@ -30,11 +30,12 @@ static	int		ft_nb_digit(int n)
 	return (digit);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa_cast(intmax_t n)
 {
 	char	*s;
 	int		i;
 
+//	n = n * -1;
 	i = ft_nb_digit(n);
 	if ((s = (char*)malloc((i + 1) * sizeof(char))) == NULL)
 		return (NULL);

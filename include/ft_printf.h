@@ -50,7 +50,7 @@ typedef	struct		s_print
 
 int					ft_printf(const char *str, ...);
 int					ft_putstr_f(char const *s);
-char				*ft_itoa_f(int n);
+char				*ft_itoa_cast(intmax_t n);
 int					stock_s(va_list ap, t_print res);
 t_print				ft_stock_d(va_list ap, t_print res);
 t_print				check_flag(const char *str, t_print res, int a);
@@ -63,11 +63,13 @@ void				compil_test_s(char *test, int i, int dif);
 
 /* Pour le pourcent d*/
 char				*ft_sign(char *str, t_print res, intmax_t rsl);
-char				*ft_zero(char *str, t_print res);
-int long long		ft_specs(t_print res, int long long va);
+char				*ft_zero(char *str, t_print res, int rsl);
+intmax_t					ft_specs(t_print res, intmax_t va);
 char				*ft_widht(char *str, t_print res);
-t_print				ft_stock_dif(va_list ap, t_print res, int rsl);
+t_print				ft_stock_dif(va_list ap, t_print res, int rsl, char *stock);
 char				*ft_point(char *str, t_print res);
 char				*ft_negatif(char *str, t_print res);
-
+t_print				ft_rsl_zero(t_print res, int rsl);
+char				*ft_sign_zero(char *str, t_print res, intmax_t rsl);
+char				*ft_sign_zero2(char *str);
 #endif
