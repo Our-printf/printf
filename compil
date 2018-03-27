@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -16,6 +17,9 @@ i=0
 while ((i == 0))
 	do
 gcc srcs/*.c ../main.c libft/libft.a
+=======
+gcc srcs/*.c main.c tests_s.c tests_c.c libft/libft.a
+>>>>>>> 6fada6f5fb9aea44b9e6c3062e1b2a549fecd3a6
 ./a.out
 
 echo "-----------------------------"

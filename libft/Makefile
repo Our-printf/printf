@@ -6,7 +6,7 @@
 #    By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 19:50:37 by rojaguen          #+#    #+#              #
-#    Updated: 2017/12/05 15:32:01 by rojaguen         ###   ########.fr        #
+#    Updated: 2018/03/19 16:25:33 by sgarcia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,8 @@ all: $(NAME)
 
 $(NAME):
 	$(COMP) $(SRC)
-	ar rc $(NAME) $(BIN)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(BIN)
+	@ranlib $(NAME)
 
 clean:
 	rm -rf $(BIN)

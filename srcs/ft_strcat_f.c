@@ -6,7 +6,7 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 18:47:54 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/02/28 20:23:15 by rojaguen         ###   ########.fr       */
+/*   Updated: 2018/03/27 19:13:10 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,20 @@ t_print		ft_strcat_f(char *s1, t_print res, char c)
 
 	i = 0;
 	a = ft_strlen(res.buf);
-	if (!c)
+	if (!c && s1)
 	{
 		while (s1[i])
 		{
 			res.buf[a] = s1[i];
 			a++;
 			i++;
+			res.length++;
 		}
 	}
-	if (c)
+	else
 	{
-		res.buf[a] = c;
-		return(res);
+		res.buf[res.length] = c;
+		res.length++;
 	}
 	return (res);
 }
