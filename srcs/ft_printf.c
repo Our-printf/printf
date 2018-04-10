@@ -6,8 +6,7 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:40:23 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/03/27 21:23:25 by rojaguen         ###   ########.fr       */
-/*   Updated: 2018/03/27 18:38:40 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/04/05 15:04:37 by sgarcia          ###   ########.fr       */
 /*   Updated: 2018/02/28 17:51:54 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -16,17 +15,6 @@
 
 t_print		if_forest(char c, va_list ap, t_print res)
 {
-//	printf("\n********** BOOL TAB **********\n");
-//	printf ("\nsharp = %d\nzero = %d\nneg = %d\npos = %d\nspace = %d \nj = %d\nz = %d\nh = %d\nl = %d\npoint = %d\nweed = %d\n",res.c_bool.sharp, res.c_bool.zero, res.c_bool.neg, res.c_bool.pos, res.c_bool.space, res.c_bool.j, res.c_bool.z, res.c_bool.h, res.c_bool.l, res.c_bool.point, res.c_bool.width);
-	
-//	ft_putstr("\n************* END ************\n");
-//	printf("\nc = %c\n", res.c_bool.c);
-//	if (!c)
-//		res.k = res.k - res.save_i;
-//	if (c == 's')
-//		stock_s(ap,res);
-	if (c == 'd' || c == 'i')
-	res =	ft_stock_d(ap,res);
 	res.length++;
 	if (c == 's' || c == 'S')
 		res = stock_s(ap, res);
@@ -34,11 +22,12 @@ t_print		if_forest(char c, va_list ap, t_print res)
 //		res = ft_stock_d(ap, res);
 	if (c == 'c' || c == 'C')
 		res = stock_c(ap, res);
-
+	if (c == '%')
+		res = stock_percent(res);
 	return (res);
 }
 
-t_print		check_true(t_print res)
+t_print		check_true(char c, t_print res)
 {
 	char	*str;
 
@@ -51,7 +40,13 @@ t_print		check_true(t_print res)
 	if (res.c_bool.zero == 1)
 		str = width_s2(str, '0', res.c_bool.width, 0);
 	if (res.c_bool.zero == 0)
-			str = width_s2(str, ' ', res.c_bool.width, 0);
+		str = width_s2(str, ' ', res.c_bool.width, 0);
+	if (res.c_bool.neg == 1)
+	{
+		str[0] = c;
+		res.k++;
+		res.length++;
+	}
 	res = ft_strcat_f(str, res, 0);
 	ft_strdel(&str);
 	return (res);
@@ -60,7 +55,6 @@ t_print		check_true(t_print res)
 t_print		distrib(const char *str, va_list ap, t_print res)
 {
 	res.save_i = res.k;
-
 	if (str[res.k] == '\0')
 	{
 		res.k++;
@@ -73,19 +67,19 @@ t_print		distrib(const char *str, va_list ap, t_print res)
 		res.k++;
 	}
 	if (res.c_bool.check == -1)
-		return (check_true(res));
+		return (check_true(str[res.k - 1], res));
 	if (res.c_bool.h > 0)
-		res.c_bool.h = (res.c_bool.h % 2) + 1;// si resultat vaut 1 => pair donc == hh, si resultat vaut 2 => impair donc  == h
+		res.c_bool.h = (res.c_bool.h % 2) + 1;
 	if (res.c_bool.l > 0)
-		res.c_bool.l = (res.c_bool.l %  2) + 1;// si resultat vaut 1 => pair donc == ll, si resultat vaut 2 => impair donc  == l
+		res.c_bool.l = (res.c_bool.l % 2) + 1;
 	if (res.c_bool.check != 0)
-		res = if_forest(res.c_bool.c, ap,res);
+		res = if_forest(res.c_bool.c, ap, res);
 	if (res.k == res.save_i)
 		res.k++;
 	return (res);
 }
 
-int		ft_printf(const char *str, ...)
+int			ft_printf(const char *str, ...)
 {
 	va_list		ap;
 	t_print		res;
@@ -103,23 +97,13 @@ int		ft_printf(const char *str, ...)
 		{
 			res.k++;
 			res = init_bool(res);
-			res = distrib(str,ap,res);// faire en sorte que a fonction renvoi un pointeur sapres le type du '%'
+			res = distrib(str, ap, res);
 			res.k--;
-		
 		}
-		else 
-		{
-			res.buf[res.length++] = str[res.k];;
-			res.k++;
-		}
+		else
+			res.buf[res.length++] = str[res.k++];
 	}
-//	printf("    ||len = %d ||", res.length);
-//	printf("\n||printf = %d ||\n", printf("%"));
-/*	printf("\n||printf = %d ||\n", printf(">>%d<<", 555));
-	printf("\n||printf = %d ||\n", printf(">>%<<"));
-	printf("\n||printf = %d ||\n", printf(">>%m<<"));
-	printf("||||| I = %d |||||", res.k + res.length);
-*/	write(1, res.buf, res.length);
+	write(1, res.buf, res.length);
 	va_end(ap);
 	return (res.length);
 }

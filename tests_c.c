@@ -230,6 +230,17 @@ void		compil_test_c5_3(char test, int j, int k)
 	fflush(stdout);
 }
 
+void		compil_test_c5_4(char test, int j, int k)
+{
+	j = printf(">>%-05c<<\n", test);
+	fflush(stdout);
+	k = ft_printf(">>%-05c<<", test);
+	fflush(stdout);
+	printf("				Diff = %d\n", j - k - 1);
+	fflush(stdout);
+}
+
+
 
 void		test_c(void)
 {
@@ -268,6 +279,7 @@ void		test_c(void)
 		compil_test_c5_1(test, 0, 0);
 		compil_test_c5_2(test, 0, 0);
 		compil_test_c5_3(test, 0, 0);
+		compil_test_c5_4(test, 0, 0);
 		i++;
 	}
 
@@ -304,6 +316,7 @@ void		test_c(void)
 		compil_test_c5_1(test, 0, 0);
 		compil_test_c5_2(test, 0, 0);
 		compil_test_c5_3(test, 0, 0);
+		compil_test_c5_4(test, 0, 0);
 		i++;
 	}
 

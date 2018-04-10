@@ -6,13 +6,13 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 00:00:56 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/03/20 18:22:42 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/04/05 09:35:57 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-char	*width_neg(char *copy, char c, int w)
+char		*width_neg(char *copy, char c, int w)
 {
 	int		j;
 	char	*str;
@@ -30,7 +30,7 @@ char	*width_neg(char *copy, char c, int w)
 	return (str);
 }
 
-char	*width_s2(char *copy, char c, int w, int len)
+char		*width_s2(char *copy, char c, int w, int len)
 {
 	int		i;
 	int		j;

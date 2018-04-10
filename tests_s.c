@@ -452,6 +452,17 @@ void		compil_test_s5_3(char *test, int j, int k)
 	fflush(stdout);
 }
 
+void		compil_test_s5_4(char *test, int j, int k)
+{
+	j = printf(">>%-05s<<\n", test);
+	fflush(stdout);
+	k = ft_printf(">>%-05s<<", test);
+	fflush(stdout);
+	printf("				Diff = %d\n", j - k - 1);
+	fflush(stdout);
+}
+
+
 
 
 void		test_s(void)
@@ -494,6 +505,7 @@ void		test_s(void)
 		compil_test_s5_1(test[i], 0, 0);
 		compil_test_s5_2(test[i], 0, 0);
 		compil_test_s5_3(test[i], 0, 0);
+		compil_test_s5_4(test[i], 0, 0);
 		printf("----------------------------------------------------------\n");
 		compil_test_s0_0(test[i], 0, 0);
 		compil_test_s0_1(test[i], 0, 0);

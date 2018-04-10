@@ -3,10 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/19 20:23:48 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/03/27 15:57:45 by sgarcia          ###   ########.fr       */
 /*   Updated: 2018/02/28 17:49:09 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -25,7 +22,7 @@ t_print		flag_relou(const char *str, t_print res)
 			res.k++;
 		}
 	}
-	else 
+	else
 	{
 		while (str[res.k] >= '0' && str[res.k] <= '9')
 		{
@@ -53,16 +50,14 @@ t_print		flag(const char *str, t_print res)
 		res.c_bool.z = 1;
 	else if (str[res.k] == 'j')
 		res.c_bool.j = 1;
-	else if (str[res.k] == '%')
-		res.c_bool.percent = 1;
 	else if (str[res.k] == 'h')
 		res.c_bool.h += 1;
 	else if (str[res.k] == 'l')
 		res.c_bool.l += 1;
 	else if ((str[res.k] >= '1' && str[res.k] <= '9') || str[res.k] == '.')
-		res = flag_relou(str,res);
-	else 
-		res.c_bool.check = -1;// verifie si il n'y a pas un caractere a la con
+		res = flag_relou(str, res);
+	else
+		res.c_bool.check = -1;
 	return (res);
 }
 
@@ -70,10 +65,9 @@ t_print		check_flag(const char *str, t_print res, int i)
 {
 	char *arg;
 
-	arg = "sSpdDioOuUxXcC";
+	arg = "sSpdDioOuUxXcC%";
 	while (str[res.k] != arg[i] && arg[i] != '\0')
 		i++;
-//	printf(	"k = %d i = %d\n",res.k,i);
 	if ((str[res.k] == arg[i]) && str[res.k] != '\0')
 	{
 		res.c_bool.c = arg[i];
@@ -81,14 +75,14 @@ t_print		check_flag(const char *str, t_print res, int i)
 	}
 	if (arg[i] == '\0')
 	{
-		res = flag(str,res);
+		res = flag(str, res);
 		return (res);
 	}
 	res.c_bool.check = 1;
-	if (res.c_bool.h > 0 || res.c_bool.j == 1 || res.c_bool.z == 1 
+	if (res.c_bool.h > 0 || res.c_bool.j == 1 || res.c_bool.z == 1
 			|| res.c_bool.l > 0)
 		res.c_bool.specs = 1;
-	else 
+	else
 		res.c_bool.specs = 0;
 	return (res);
 }

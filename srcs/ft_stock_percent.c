@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_c.c                                       :+:      :+:    :+:   */
+/*   ft_stock_percent.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 15:45:01 by sgarcia           #+#    #+#             */
-/*   Updated: 2018/04/05 09:36:54 by sgarcia          ###   ########.fr       */
+/*   Created: 2018/03/27 21:41:50 by sgarcia           #+#    #+#             */
+/*   Updated: 2018/04/05 09:49:23 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-t_print		strcat_c(char *str, t_print res, char c)
+t_print		strcat_percent(char *str, t_print res)
 {
 	int		i;
 
@@ -23,12 +23,10 @@ t_print		strcat_c(char *str, t_print res, char c)
 		i++;
 		res.length++;
 	}
-	if (c != '\0')
-		res.length++;
 	return (res);
 }
 
-char		*width_c(char *copy, char c, int w)
+char		*width_percent(char *copy, char c, int w)
 {
 	int		i;
 	int		j;
@@ -40,31 +38,25 @@ char		*width_c(char *copy, char c, int w)
 	return (copy);
 }
 
-t_print		stock_c(va_list ap, t_print res)
+t_print		stock_percent(t_print res)
 {
-	char	c;
 	char	*str;
 
-	c = va_arg(ap, int);
-	if (!c || c == 0)
-		c = '\0';
 	if (res.c_bool.width > 0)
 	{
 		str = ft_memalloc(res.c_bool.width);
 		if (res.c_bool.zero == 1 && res.c_bool.neg == 0)
-			str = width_c(str, '0', res.c_bool.width);
+			str = width_percent(str, '0', res.c_bool.width);
 		else
-			str = width_c(str, ' ', res.c_bool.width);
+			str = width_percent(str, ' ', res.c_bool.width);
 		if (res.c_bool.neg == 0)
-			str[res.c_bool.width - 1] = c;
+			str[res.c_bool.width - 1] = '%';
 		if (res.c_bool.neg == 1)
-			str[0] = c;
-		res = strcat_c(str, res, c);
+			str[0] = '%';
+		res = strcat_percent(str, res);
 		ft_strdel(&str);
-		if (c != '\0')
-			res.length--;
 	}
 	else
-		res = (ft_strcat_f(0, res, c));
+		res = (ft_strcat_f(0, res, '%'));
 	return (res);
 }
