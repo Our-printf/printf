@@ -6,7 +6,7 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:40:23 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/04/05 15:04:37 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/04/18 13:09:24 by sgarcia          ###   ########.fr       */
 /*   Updated: 2018/02/28 17:51:54 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -17,11 +17,21 @@ t_print		if_forest(char c, va_list ap, t_print res)
 {
 	res.length++;
 	if (c == 's' || c == 'S')
-		res = stock_s(ap, res);
+	{
+		if (res.c_bool.l == 2 || c == 'S')
+			res = stock_ls(ap, res, 0);
+		else
+			res = stock_s(ap, res);
+	}
 //	if (c == 'd')
 //		res = ft_stock_d(ap, res);
 	if (c == 'c' || c == 'C')
-		res = stock_c(ap, res);
+	{
+		if (res.c_bool.l == 2 || c == 'C')
+			res = stock_lc(ap, res);
+		else
+			res = stock_c(ap, res);
+	}
 	if (c == '%')
 		res = stock_percent(res);
 	return (res);

@@ -3,7 +3,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "../../libft/libft.h"
+#include "../libft/libft.h"
 #include <stdio.h>
 #ifndef BUFF_SIZE
 # define BUFF_SIZE 4096
@@ -19,7 +19,7 @@ typedef	struct		s_struct
 	void			*t_void;
 }					t_struct;
 
-typedef	struct		s_bool
+typedef	struct			s_bool
 {
 	unsigned	int		sharp	:	1;
 	unsigned	int		zero	:	1;
@@ -47,9 +47,9 @@ typedef	struct		s_print
 	t_bool			c_bool;
 }					t_print;
 
-
 int					ft_printf(const char *str, ...);
 int					ft_putstr_f(char const *s);
+t_print				distrib(const char *str, va_list ap, t_print res);
 char				*ft_itoa_f(int n);
 //t_print				ft_stock_d(va_list ap, t_print res);
 t_print				check_flag(const char *str, t_print res, int a);
@@ -74,17 +74,38 @@ char				*width_s2(char *copy, char c, int w, int len);
 char				*preci_s(char *tmp, t_print res);
 char				*width_s(char *tmp, t_print res);
 t_print				stock_s(va_list ap, t_print res);
+t_print				stock_ls(va_list ap, t_print res, int i);
+t_print				strcat_point_static(t_print res, char c, int size);
+char				*preci_ls(char *copy, t_print res);
+t_print				width_ls(char *tmp, t_print res);
+char				*s_unicode_2_octets(int unicode, char *uni, int i);
+char				*s_unicode_3_octets(int unicode, char *uni, int i);
+char				*s_unicode_4_octets(int unicode, char *uni, int i);
+char				*print_s_unicode(int n, t_print res, char *uni);
+char				*mall_size_of_s_unicode(wchar_t *tmp);
 
 /* Pour le pourcent c */
 t_print				stock_c(va_list ap, t_print res);
+t_print				stock_lc(va_list ap, t_print res);
+t_print				strcat_c(char *str, t_print res, char c);
+char				*width_c(char *copy, char c, int w);
+t_print				function_c(char c, t_print res);
+t_print				size_of_unicode(int n, t_print res);
+t_print				print_width(t_print res, int nb);
+t_print				unicode_2_octets(t_print res, int unicode);
+t_print				unicode_3_octets(t_print res, int unicode);
+t_print				unicode_4_octets(t_print res, int unicode);
 
-/* Pour le pourcent % */
+// Pour le pourcent % 
 t_print				stock_percent(t_print res);
-
+t_print				strcat_percent(char *str, t_print res);
+char				*width_percent(char *copy, char c, int w);
 
 /*Main de test */
 void				test_s(void);
 void				test_c(void);
 void				test_per(void);
+void				test_lc(void);
+void				test_ls(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 00:00:56 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/04/05 09:35:57 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/04/18 13:07:32 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char		*width_s2(char *copy, char c, int w, int len)
 	str = ft_memalloc(w);
 	while (i < (w - len))
 		str[i++] = c;
-	while (copy[j])
+	while (copy[j] && i + j < w)
 	{
 		str[i + j] = copy[j];
 		j++;
@@ -95,8 +95,14 @@ t_print		stock_s(va_list ap, t_print res)
 	tmp = va_arg(ap, char *);
 	if (tmp == NULL)
 		tmp = "(null)";
+	if (res.c_bool.point == 0)
+	{
+		copy = width_s("\0", res);
+		res = ft_strcat_f(copy, res, 0);
+		return (res);
+	}
 	copy = ft_strdup(tmp);
-	if (res.c_bool.point >= 0)
+	if (res.c_bool.point > 0)
 		copy = preci_s(copy, res);
 	if (res.c_bool.width > 0)
 		copy = width_s(copy, res);
