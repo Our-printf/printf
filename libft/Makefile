@@ -6,7 +6,7 @@
 #    By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 19:50:37 by rojaguen          #+#    #+#              #
-#    Updated: 2018/03/19 16:25:33 by sgarcia          ###   ########.fr        #
+#    Updated: 2018/04/19 19:47:58 by sgarcia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,9 +48,9 @@ $(NAME):
 	@ranlib $(NAME)
 
 clean:
-	rm -rf $(BIN)
+	@rm -rf $(BIN)
 
 fclean: clean
-	rm -rf  $(NAME)
+	@rm -rf  $(NAME)
 
 re: fclean all

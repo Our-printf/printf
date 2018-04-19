@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_f.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/28 18:11:23 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/03/01 18:57:16 by rojaguen         ###   ########.fr       */
+/*   Created: 2017/11/24 06:14:41 by rojaguen          #+#    #+#             */
+/*   Updated: 2018/03/21 18:17:18 by rojaguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static	int		ft_nb_digit(int n)
+static	int		ft_nb_digit(intmax_t n)
 {
 	int digit;
 
@@ -30,14 +30,16 @@ static	int		ft_nb_digit(int n)
 	return (digit);
 }
 
-char			*ft_itoa_f(int n)
+char			*ft_itoa_cast(intmax_t n)
 {
-	char	s[11];
-	char	*d;
+	char	*s;
 	int		i;
 
-	i = ft_nb_digit(n) - 1;
-	ft_bzero(s, 11);
+//	n = n * -1;
+	i = ft_nb_digit(n);
+	if ((s = (char*)malloc((i + 1) * sizeof(char))) == NULL)
+		return (NULL);
+	s[i--] = '\0';
 	if (n == 0)
 		s[i] = 48;
 	if (n < 0)
@@ -52,6 +54,5 @@ char			*ft_itoa_f(int n)
 		s[i--] = n % 10 + 48;
 		n = n / 10;
 	}
-	d = s;
-	return (ft_strdup(s));
+	return (s);
 }

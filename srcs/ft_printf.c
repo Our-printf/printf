@@ -6,7 +6,7 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:40:23 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/04/18 13:09:24 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/04/20 00:12:41 by sgarcia          ###   ########.fr       */
 /*   Updated: 2018/02/28 17:51:54 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -23,8 +23,13 @@ t_print		if_forest(char c, va_list ap, t_print res)
 		else
 			res = stock_s(ap, res);
 	}
-//	if (c == 'd')
-//		res = ft_stock_d(ap, res);
+	if (c == 'd' || c == 'D')
+	{
+		if (c == 'd')
+			res = ft_stock_d(ap, res, 0, 0);
+		else
+			res = ft_stock_d(ap, res, 0, 0);
+	}
 	if (c == 'c' || c == 'C')
 	{
 		if (res.c_bool.l == 2 || c == 'C')
@@ -113,6 +118,7 @@ int			ft_printf(const char *str, ...)
 		else
 			res.buf[res.length++] = str[res.k++];
 	}
+//	while (1){};
 	write(1, res.buf, res.length);
 	va_end(ap);
 	return (res.length);

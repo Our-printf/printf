@@ -241,7 +241,6 @@ void		compil_test_c5_4(char test, int j, int k)
 }
 
 
-
 void		test_c(void)
 {
 	int i = 1;

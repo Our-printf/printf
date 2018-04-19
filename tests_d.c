@@ -21,9 +21,9 @@ void		compil_test_d1(int test, int j, int k)
 
 void		compil_test_d1_1(int test, int j, int k)
 {
-	j = printf(">>%c et %d<<\n", "\0", test);
+	j = printf(">>%dc et %d<<\n", "\0", test);
 	fflush(stdout);
-	k = ft_printf(">>%c et %d<<", "\0", test);
+	k = ft_printf(">>%dc et %d<<", "\0", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
@@ -120,9 +120,9 @@ void		compil_test_d3_4(int test, int j, int k)
 
 void		compil_test_d3_5(int test, int j, int k)
 {
-	j = printf(">>%20c et %15d<<\n", test, test);
+	j = printf(">>%20d et %15d<<\n", test, test);
 	fflush(stdout);
-	k = ft_printf(">>%20c et %15d<<", test, test);
+	k = ft_printf(">>%20d et %15d<<", test, test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }

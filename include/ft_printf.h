@@ -39,6 +39,8 @@ typedef	struct			s_bool
 
 typedef	struct		s_print
 {
+	char			*tmp;
+	int				len;
 	char			buf[BUFF_SIZE];
 	int				i;
 	int				k;
@@ -51,22 +53,35 @@ int					ft_printf(const char *str, ...);
 int					ft_putstr_f(char const *s);
 t_print				distrib(const char *str, va_list ap, t_print res);
 char				*ft_itoa_f(int n);
-//t_print				ft_stock_d(va_list ap, t_print res);
 t_print				check_flag(const char *str, t_print res, int a);
 t_print				init_bool(t_print res);
 t_print				if_forest(char c, va_list ap, t_print res);
 t_print				ft_strcat_f(char *s1, t_print res,char c);
-//int				stock_d(va_list ap, t_print res);
 t_print				check_true(char c, t_print res);
 
 /* Pour le pourcent d*/
 char				*ft_sign(char *str, t_print res, intmax_t rsl);
-char				*ft_zero(char *str, t_print res);
-int long long		ft_specs(t_print res, int long long va);
 char				*ft_widht(char *str, t_print res);
-t_print				ft_stock_dif(va_list ap, t_print res, int rsl);
 char				*ft_point(char *str, t_print res);
 char				*ft_negatif(char *str, t_print res);
+char				*ft_zero2(char *str, t_print res);
+char				*ft_zero3(char *str, t_print res, int cn);
+char				*ft_itoa_cast(intmax_t n);
+t_print				ft_rsl_zero(t_print res, int rsl);
+char				*ft_sign_zero(char *str, t_print res, intmax_t rsl);
+char				*ft_sign_zero2(char *str);
+char				*ft_widht_zero(char *str, t_print res);
+char				*ft_point_zero(char *str, t_print res);
+char				*ft_sign_zero2(char *str);
+char				*ft_sign_zero(char *str, t_print res, intmax_t rsl);
+t_print				ft_stock_dif(t_print res, int rsl, char *stock);
+intmax_t			ft_specs(t_print res, intmax_t va);
+char				*ft_zero(char *str, t_print res, int cn);
+char				*ft_sign2(char *str, t_print res, char *s);
+char				*ft_sign3(char *str, t_print res, int rsl, int i);
+t_print				ft_stock_d2(t_print res, int rsl, long long va);
+t_print				ft_stock_d(va_list ap, t_print res, int rsl, long long va);
+char				*ft_strdup_l(char *s1);
 
 /* Pour le pourcent s */
 char				*width_neg(char *copy, char c, int w);
@@ -107,5 +122,6 @@ void				test_c(void);
 void				test_per(void);
 void				test_lc(void);
 void				test_ls(void);
+void				test_d(void);
 
 #endif

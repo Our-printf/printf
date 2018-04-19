@@ -1,2 +1,2 @@
-gcc srcs/*.c main.c tests_lc.c tests_ls.c tests_s.c tests_c.c tests_percent.c libft/libft.a
+gcc srcs/*.c main.c tests_lc.c tests_ls.c tests_s.c tests_c.c tests_percent.c tests_d.c libft/libft.a
 ./a.out
