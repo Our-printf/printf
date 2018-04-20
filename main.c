@@ -6,7 +6,7 @@
 /*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 13:29:24 by sgarcia           #+#    #+#             */
-/*   Updated: 2018/04/20 01:01:25 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/04/21 01:19:20 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,15 @@ int main()
 //	ft_printf("\n");
 //	ft_printf("%%\n");
 //	ft_printf("%d\n", 42);
-	ft_printf("%d%d\n", 42, 41);
-	ft_printf("%d%d%d\n", 42, 43, 44);
+/*	printf("%d\n", 50);
+	fflush(stdout);
+	ft_printf("%d%d\n", 44, 88);
+	printf("%d %d %d\n", 42, 43, 44);
+	fflush(stdout);
+	ft_printf("%d %d %d\n", 42, 43, 44);
+	printf("%d %d %d %d %d %d\n", 99, 0, 44, 46768, 189777, -792668);
+	fflush(stdout);
+	ft_printf("%d %d %d %d %d %d\n", 99, 0, 44, 46768, 189777, -792668);
 	ft_printf("%ld\n", 2147483647);
 	ft_printf("%lld\n", 9223372036854775807);
 	ft_printf("%x\n", 505);
@@ -82,8 +89,10 @@ int main()
 	ft_printf("%S\n", L"ݗݜशব");
 	ft_printf("%s%s\n", "test", "test");
 	ft_printf("%s%s%s\n", "test", "test", "test");
-	ft_printf("%C\n", 15000);
+	ft_printf("%C\n", 15000);*/
+//	ft_printf("% 025d\n", -i45);
 
+//	printf("% 025d\n", -i45);
 
 
 
@@ -162,11 +171,11 @@ int main()
 		ft_printf("|%26ls|\n", L"我是一只猫。");
 		ft_printf("|%25ls|\n", L"我是一只猫。");
 		*/
-	//	int d = 123;
-	//	char *s = "123";
+	//	int d = i;
+	//	char *s = "i";
 	//	test_s();
 	//	ft_printf("%.s\n", (char *)42);
-	//	test_d();
+//		test_d();
 	//	test_lc();
 	//	test_ls();
 	//	test_s();
@@ -198,6 +207,7 @@ int main()
 	printf("%-010lc\n", L'ሴ');
 	printf("%.10lc\n", L'ሴ');
 	printf("%-.10lc\n", L'ሴ');
+		ft_printf("%u",4294967295);
 	printf("%-.1lc\n", L'ሴ');
 	*///	printf("len = %d\n", printf("%C", L'ሴ'));
 	//	printf("%010lc\n", L'ሴ');
@@ -210,34 +220,794 @@ int main()
 		printf("%C\n", L'臦');
 		printf("%lC\n", L'臦');
 		printf("%llC\n", L'臦');
-		printf("%d\n", 123);
-		printf("%2d\n", 123);
-		printf("%4d\n", 123);
-		printf("%.4d\n", 123);
-		printf("%.04d\n", 123);
-		printf("%+0.04d\n", 123);
-		printf("%+d\n", 123);
-		printf("%+ d\n", 123);
-		printf("% d\n", 123);
-		printf("%+4d\n", 123);
-		printf("%+.04d\n", 123);
-		printf("%0.4d\n", 123);
-		printf("%.2d\n", 123);
-		printf("%-0.04d\n", 123);
-		printf("%-d\n", 123);
-		printf("%- d\n", 123);
-		printf("%-4d\n", 123);
-		printf("%-.04d\n", 123);
-		printf("%-4 d\n\n", 123);
+*/
+	int i;
+//	i = 012345;
+	i = -12345;
+//	i = -2147483648;
+//	i = 2147483647;
+//	i = -0;
+		printf("%d\n", i);
+		fflush(stdout);
+		ft_printf("%d\n", i);
+				printf("\n");
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+		printf("%-d\n", i);
+		fflush(stdout);
+		ft_printf("%-d\n", i);
+				printf("\n");
 
-		printf("4567 |%-10]5d| plip\n", 12);
+		printf("%-0d\n", i);
+		fflush(stdout);
+		ft_printf("%-0d\n", i);
+				printf("\n");
+
+		printf("%-1d\n", i);
+		fflush(stdout);
+		ft_printf("%-1d\n", i);
+				printf("\n");
+
+		printf("%-10d\n", i);
+		fflush(stdout);
+		ft_printf("%-10d\n", i);
+				printf("\n");
+
+		printf("%-010d\n", i);
+		fflush(stdout);
+		ft_printf("%-010d\n", i);
+				printf("\n");
+
+		printf("%-.d\n", i);
+		fflush(stdout);
+		ft_printf("%-.d\n", i);
+				printf("\n");
+
+		printf("%-.0d\n", i);
+		fflush(stdout);
+		ft_printf("%-.0d\n", i);
+				printf("\n");
+
+		printf("%-0.0d\n", i);
+		fflush(stdout);
+		ft_printf("%-0.0d\n", i);
+				printf("\n");
+
+		printf("%-+d\n", i);
+		fflush(stdout);
+		ft_printf("%-+d\n", i);
+				printf("\n");
+
+		printf("%+-d\n", i);
+		fflush(stdout);
+		ft_printf("%+-d\n", i);
+				printf("\n");
+
+		printf("%-+10d\n", i);
+		fflush(stdout);
+		ft_printf("%-+10d\n", i);
+				printf("\n");
+
+		printf("%-+010d\n", i);
+		fflush(stdout);
+		ft_printf("%-+010d\n", i);
+				printf("\n");
+
+		printf("%-+1d\n", i);
+		fflush(stdout);
+		ft_printf("%-+1d\n", i);
+				printf("\n");
+
+		printf("%- d\n", i);
+		fflush(stdout);
+		ft_printf("%- d\n", i);
+				printf("\n");
+
+		printf("% -d\n", i);
+		fflush(stdout);
+		ft_printf("% -d\n", i);
+				printf("\n");
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+		printf("%-d\n", i);
+		fflush(stdout);
+		ft_printf("%-d\n", i);
+				printf("\n");
+
+		printf("%-0d\n", i);
+		fflush(stdout);
+		ft_printf("%-0d\n", i);
+				printf("\n");
+
+		printf("%-1d\n", i);
+		fflush(stdout);
+		ft_printf("%-1d\n", i);
+				printf("\n");
+
+		printf("%-10d\n", i);
+		fflush(stdout);
+		ft_printf("%-10d\n", i);
+				printf("\n");
+
+		printf("%-010d\n", i);
+		fflush(stdout);
+		ft_printf("%-010d\n", i);
+				printf("\n");
+
+		printf("%.d\n", i);
+		fflush(stdout);
+		ft_printf("%.d\n", i);
+				printf("\n");
+
+		printf("%.0d\n", i);
+		fflush(stdout);
+		ft_printf("%.0d\n", i);
+				printf("\n");
+
+		printf("%-0.0d\n", i);
+		fflush(stdout);
+		ft_printf("%-0.0d\n", i);
+				printf("\n");
+
+		printf("%-+d\n", i);
+		fflush(stdout);
+		ft_printf("%-+d\n", i);
+				printf("\n");
+
+		printf("%+-d\n", i);
+		fflush(stdout);
+		ft_printf("%+-d\n", i);
+				printf("\n");
+
+		printf("%-+10d\n", i);
+		fflush(stdout);
+		ft_printf("%-+10d\n", i);
+				printf("\n");
+
+		printf("%-+010d\n", i);
+		fflush(stdout);
+		ft_printf("%-+010d\n", i);
+				printf("\n");
+
+		printf("%-+1d\n", i);
+		fflush(stdout);
+		ft_printf("%-+1d\n", i);
+				printf("\n");
+
+		printf("%- d\n", i);
+		fflush(stdout);
+		ft_printf("%- d\n", i);
+				printf("\n");
+
+		printf("% -d\n", i);
+		fflush(stdout);
+		ft_printf("% -d\n", i);
+				printf("\n");
+
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+		printf("%- d\n", i);
+		fflush(stdout);
+		ft_printf("%- d\n", i);
+				printf("\n");
+
+		printf("%- 0d\n", i);
+		fflush(stdout);
+		ft_printf("%- 0d\n", i);
+				printf("\n");
+
+		printf("%- 1d\n", i);
+		fflush(stdout);
+		ft_printf("%- 1d\n", i);
+				printf("\n");
+
+		printf("%- 10d\n", i);
+		fflush(stdout);
+		ft_printf("%- 10d\n", i);
+				printf("\n");
+
+		printf("%- 010d\n", i);
+		fflush(stdout);
+		ft_printf("%- 010d\n", i);
+				printf("\n");
+
+		printf("%- .d\n", i);
+		fflush(stdout);
+		ft_printf("%- .d\n", i);
+				printf("\n");
+
+		printf("%- .0d\n", i);
+		fflush(stdout);
+		ft_printf("%- .0d\n", i);
+				printf("\n");
+
+		printf("%- 0.0d\n", i);
+		fflush(stdout);
+		ft_printf("%- 0.0d\n", i);
+				printf("\n");
+
+		printf("%-+ d\n", i);
+		fflush(stdout);
+		ft_printf("%-+ d\n", i);
+				printf("\n");
+
+		printf("%+- d\n", i);
+		fflush(stdout);
+		ft_printf("%+- d\n", i);
+				printf("\n");
+
+		printf("%-+ 10d\n", i);
+		fflush(stdout);
+		ft_printf("%-+ 10d\n", i);
+				printf("\n");
+
+		printf("%-+ 010d\n", i);
+		fflush(stdout);
+		ft_printf("%-+ 010d\n", i);
+				printf("\n");
+
+		printf("%-+ 1d\n", i);
+		fflush(stdout);
+		ft_printf("%-+ 1d\n", i);
+				printf("\n");
+
+		printf("%- d\n", i);
+		fflush(stdout);
+		ft_printf("%- d\n", i);
+				printf("\n");
+
+		printf("% -d\n", i);
+		fflush(stdout);
+		ft_printf("% -d\n", i);
+				printf("\n");
+
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+		printf("Chap 02\n");//CHAP 02
+		fflush(stdout);
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+
+		printf("% d\n", i);
+		fflush(stdout);
+		ft_printf("% d\n", i);
+				printf("\n");
+
+		printf("% 0d\n", i);
+		fflush(stdout);
+		ft_printf("% 0d\n", i);
+				printf("\n");
+
+		printf("% 1d\n", i);
+		fflush(stdout);
+		ft_printf("% 1d\n", i);
+				printf("\n");
+
+		printf("% 10d\n", i);
+		fflush(stdout);
+		ft_printf("% 10d\n", i);
+				printf("\n");
+
+		printf("% 0d\n", i);
+		fflush(stdout);
+		ft_printf("% 0d\n", i);
+				printf("\n");
+
+		printf("% 5d\n", i);
+		fflush(stdout);
+		ft_printf("% 5d\n", i);
+				printf("\n");
+
+		printf("% d\n", i);
+		fflush(stdout);
+		ft_printf("% d\n", i);
+				printf("\n");
+
+		printf("% 010d\n", i);
+		fflush(stdout);
+		ft_printf("% 010d\n", i);
+				printf("\n");
+
+		printf("% .d\n", i);
+		fflush(stdout);
+		ft_printf("% .d\n", i);
+				printf("\n");
+
+		printf("% .0d\n", i);
+		fflush(stdout);
+		ft_printf("% .0d\n", i);
+				printf("\n");
+
+		printf("% 0.0d\n", i);
+		fflush(stdout);
+		ft_printf("% 0.0d\n", i);
+				printf("\n");
+
+		printf("%-+ d\n", i);
+		fflush(stdout);
+		ft_printf("%-+ d\n", i);
+				printf("\n");
+
+		printf("%+- d\n", i);
+		fflush(stdout);
+		ft_printf("%+- d\n", i);
+				printf("\n");
+
+		printf("%-+ 10d\n", i);
+		fflush(stdout);
+		ft_printf("%-+ 10d\n", i);
+				printf("\n");
+
+		printf("%-+ 010d\n", i);
+		fflush(stdout);
+		ft_printf("%-+ 010d\n", i);
+				printf("\n");
+
+		printf("%-+ 1d\n", i);
+		fflush(stdout);
+		ft_printf("%-+ 1d\n", i);
+				printf("\n");
+
+		printf("%- d\n", i);
+		fflush(stdout);
+		ft_printf("%- d\n", i);
+				printf("\n");
+
+		printf("% -d\n", i);
+		fflush(stdout);
+		ft_printf("% -d\n", i);
+				printf("\n");
+
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+
+		printf("%d\n", i);
+		fflush(stdout);
+		ft_printf("%d\n", i);
+				printf("\n");
+
+		printf("%0d\n", i);
+		fflush(stdout);
+		ft_printf("%0d\n", i);
+				printf("\n");
+
+		printf("%010d\n", i);
+		fflush(stdout);
+		ft_printf("%010d\n", i);
+				printf("\n");
+
+		printf("%10d\n", i);
+		fflush(stdout);
+		ft_printf("%10d\n", i);
+				printf("\n");
+
+		printf("%01d\n", i);
+		fflush(stdout);
+		ft_printf("%01d\n", i);
+				printf("\n");
+
+		printf("%5d\n", i);
+		fflush(stdout);
+		ft_printf("%5d\n", i);
+				printf("\n");
+
+		printf("%d\n", i);
+		fflush(stdout);
+		ft_printf("%d\n", i);
+				printf("\n");
+
+		printf("%010d\n", i);
+		fflush(stdout);
+		ft_printf("%010d\n", i);
+				printf("\n");
+
+		printf("%010.3d\n", i);
+		fflush(stdout);
+		ft_printf("%010.3d\n", i);
+				printf("\n");
+
+		printf("%10.3d\n", i);
+		fflush(stdout);
+		ft_printf("%10.3d\n", i);
+				printf("\n");
+
+		printf("zxc % +010.3d azerty\n", i);
+		fflush(stdout);
+		ft_printf("zxc % +010.3d azerty\n", i);
+				printf("\n");
+
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+
+		printf("%11.11d\n", i);
+		fflush(stdout);
+		ft_printf("%11.11d\n", i);
+				printf("\n");
+
+		printf("%10.8d\n", i);
+		fflush(stdout);
+		ft_printf("%10.8d\n", i);
+				printf("\n");
+
+		printf("%10.0d\n", i);
+		fflush(stdout);
+		ft_printf("%10.0d\n", i);
+				printf("\n");
+
+		printf("% -10.07d\n", i);
+		fflush(stdout);
+		ft_printf("% -10.07d\n", i);
+				printf("\n");
+
+		printf("%-10.07d\n", i);
+		fflush(stdout);
+		ft_printf("%-10.07d\n", i);
+				printf("\n");
+
+		printf("%-10.7d\n", i);
+		fflush(stdout);
+		ft_printf("%-10.7d\n", i);
+				printf("\n");
+
+		printf("%-10.7d\n", i);
+		fflush(stdout);
+		ft_printf("%-10.7d\n", i);
+				printf("\n");
+
+
+		printf("% -010.01d\n", i);
+		fflush(stdout);
+		ft_printf("% -010.01d\n", i);
+				printf("\n");
+
+		printf("% 10.10d\n", i);
+		fflush(stdout);
+		ft_printf("% 10.10d\n", i);
+				printf("\n");
+
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+		printf("--------------------------------------------\n");
+
+		fflush(stdout);
+		printf("%0d\n", i);
+		fflush(stdout);
+		ft_printf("%0d\n", i);
+				printf("\n");
+
+		printf("%0.0d\n", i);
+		fflush(stdout);
+		ft_printf("%0.0d\n", i);
+				printf("\n");
+
+		printf("%-+d\n", i);
+		fflush(stdout);
+		ft_printf("%-+d\n", i);
+				printf("\n");
+
+		printf("%+-d\n", i);
+		fflush(stdout);
+		ft_printf("%+-d\n", i);
+				printf("\n");
+
+		printf("%-+10d\n", i);
+		fflush(stdout);
+		ft_printf("%-+10d\n", i);
+				printf("\n");
+
+		printf("%-+010d\n", i);
+		fflush(stdout);
+		ft_printf("%-+010d\n", i);
+				printf("\n");
+
+		printf("%-+1d\n", i);
+		fflush(stdout);
+		ft_printf("%-+1d\n", i);
+				printf("\n");
+
+		printf("%-d\n", i);
+		fflush(stdout);
+		ft_printf("%-d\n", i);
+				printf("\n");
+
+		printf("--------------------------------------------\n");
+
+		fflush(stdout);
+		printf("%.d\n", i);
+		fflush(stdout);
+		ft_printf("%.d\n", i);
+				printf("\n");
+
+		printf("%.0d\n", i);
+		fflush(stdout);
+		ft_printf("%.0d\n", i);
+				printf("\n");
+
+		printf("%.1d\n", i);
+		fflush(stdout);
+		ft_printf("%.1d\n", i);
+				printf("\n");
+
+		printf("%.10d\n", i);
+		fflush(stdout);
+		ft_printf("%.10d\n", i);
+				printf("\n");
+
+		printf("%.010d\n", i);
+		fflush(stdout);
+		ft_printf("%.010d\n", i);
+				printf("\n");
+
+		printf("%.5d\n", i);
+		fflush(stdout);
+		ft_printf("%.5d\n", i);
+				printf("\n");
+
+		printf("%.4d\n", i);
+		fflush(stdout);
+		ft_printf("%.4d\n", i);
+				printf("\n");
+
+		printf("%d\n", i);
+		fflush(stdout);
+		ft_printf("%d\n", i);
+				printf("\n");
+
+		printf("%.010d\n", i);
+		fflush(stdout);
+		ft_printf("%.010d\n", i);
+				printf("\n");
+
+		printf("%.d\n", i);
+		fflush(stdout);
+		ft_printf("%.d\n", i);
+				printf("\n");
+
+		printf("%.0d\n", i);
+		fflush(stdout);
+		ft_printf("%.0d\n", i);
+				printf("\n");
+
+		printf("%.00d\n", i);
+		fflush(stdout);
+		ft_printf("%.00d\n", i);
+				printf("\n");
+
+		printf("%-+.d\n", i);
+		fflush(stdout);
+		ft_printf("%-+.d\n", i);
+				printf("\n");
+
+		printf("%+-.d\n", i);
+		fflush(stdout);
+		ft_printf("%+-.d\n", i);
+				printf("\n");
+
+		printf("%-+.10d\n", i);
+		fflush(stdout);
+		ft_printf("%-+.10d\n", i);
+				printf("\n");
+
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+		printf("Chap 03\n");//CHAP 03
+		fflush(stdout);
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+
+		printf("%.-+010d\n", i);
+		fflush(stdout);
+		ft_printf("%.-+010d\n", i);
+				printf("\n");
+
+		printf("%.-+1d\n", i);
+		fflush(stdout);
+		ft_printf("%.-+1d\n", i);
+				printf("\n");
+
+		printf("%-.d\n", i);
+		fflush(stdout);
+		ft_printf("%-.d\n", i);
+				printf("\n");
+
+		printf("%.-d\n", i);
+		fflush(stdout);
+		ft_printf("%.-d\n", i);
+				printf("\n");
+
+		printf("%-10.10d\n", i);
+		fflush(stdout);
+		ft_printf("%-10.10d\n", i);
+				printf("\n");
+
+		printf("%-10.0d\n", i);
+		fflush(stdout);
+		ft_printf("%-10.0d\n", i);
+				printf("\n");
+
+		printf("%-10.01d\n", i);
+		fflush(stdout);
+		ft_printf("%-10.01d\n", i);
+				printf("\n");
+
+		printf("%-010.01d\n", i);
+		fflush(stdout);
+		ft_printf("%-010.01d\n", i);
+				printf("\n");
+
+		printf("%0.10d\n", i);
+		fflush(stdout);
+		ft_printf("%0.10d\n", i);
+				printf("\n");
+
+		printf("%0.0d\n", i);
+		fflush(stdout);
+		ft_printf("%0.0d\n", i);
+				printf("\n");
+
+		printf("%0.01d\n", i);
+		fflush(stdout);
+		ft_printf("%0.01d\n", i);
+				printf("\n");
+
+		printf("%00.01d\n", i);
+		fflush(stdout);
+		ft_printf("%00.01d\n", i);
+				printf("\n");
+
+		printf("%1.10d\n", i);
+		fflush(stdout);
+		ft_printf("%1.10d\n", i);
+				printf("\n");
+
+		printf("%1.0d\n", i);
+		fflush(stdout);
+		ft_printf("%1.0d\n", i);
+				printf("\n");
+
+		printf("%1.01d\n", i);
+		fflush(stdout);
+		ft_printf("%1.01d\n", i);
+				printf("\n");
+
+		printf("%01.01d\n", i);
+		fflush(stdout);
+		ft_printf("%01.01d\n", i);
+				printf("\n");
+
+		printf("%.3d\n", i);
+		fflush(stdout);
+		ft_printf("%.3d\n", i);
+				printf("\n");
+
+		printf("%.4d\n", i);
+		fflush(stdout);
+		ft_printf("%.4d\n", i);
+				printf("\n");
+
+		printf("%4d\n", i);
+		fflush(stdout);
+		ft_printf("%4d\n", i);
+				printf("\n");
+
+		printf("%5d\n", i);
+		fflush(stdout);
+		ft_printf("%5d\n", i);
+				printf("\n");
+
+		printf("%4.3d\n", i);
+		fflush(stdout);
+		ft_printf("%4.3d\n", i);
+				printf("\n");
+
+		printf("%4.4d\n", i);
+		fflush(stdout);
+		ft_printf("%4.4d\n", i);
+				printf("\n");
+
+		printf("%5.3d\n", i);
+		fflush(stdout);
+		ft_printf("%5.3d\n", i);
+				printf("\n");
+
+		printf("%5.4d\n", i);
+		fflush(stdout);
+		ft_printf("%5.4d\n", i);
+				printf("\n");
+
+		printf("20 : 4567 |%-10]5d| plip\n", 12);
+		fflush(stdout);
+		ft_printf("20 : 4567 |%-10]5d| plip\n", 12);
+				printf("\n");
+
 		printf("4567 |%10]5d| plip\n", 12);
+		fflush(stdout);
+		ft_printf("4567 |%10]5d| plip\n", 12);
+				printf("\n");
+
 		printf("|%10.5d|\n", -12);
+		fflush(stdout);
+		ft_printf("|%10.5d|\n", -12);
+				printf("\n");
+
 		printf("|%10d|\n", -12);
-		printf("|%010d|\n", -12); 
+		fflush(stdout);
+		ft_printf("|%10d|\n", -12);
+				printf("\n");
+
+		printf("|%010d|\n", -12);
+		fflush(stdout);
+		ft_printf("|%010d|\n", -12);
+				printf("\n");
+
 		printf("|%-10.5d|\n", -12);
+		fflush(stdout);
+		ft_printf("|%-10.5d|\n", -12);
+				printf("\n");
+
 		printf("|%-010.5d|\n", -12);
-		*/
+		fflush(stdout);
+		ft_printf("|%-010.5d|\n", -12);
+				printf("\n");
+
+		printf("%-03.2d\n", 0);
+		fflush(stdout);
+		ft_printf("%-03.2d\n", 0);
+				printf("\n");
+
+		printf("%-3.2d\n", 0);
+		fflush(stdout);
+		ft_printf("%-3.2d\n", 0);
+				printf("\n");
+
+		printf("%03.2d\n", 0);
+		fflush(stdout);
+		ft_printf("%03.2d\n", 0);
+				printf("\n");
+
+		printf("%03.1d\n", 0);
+		fflush(stdout);
+		ft_printf("%03.1d\n", 0);
+				printf("\n");
+
+		printf("%03.2d\n", 1);
+		fflush(stdout);
+		ft_printf("%03.2d\n", 1);
+				printf("\n");
+/*
+		printf();
+		fflush(stdout);
+		ft_printf();
+				printf("\n");
+
+		printf();
+		fflush(stdout);
+		ft_printf();
+				printf("\n");
+*/
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
 	//	printf("%10s", NULL);
 	//	ft_printf("lol %C lol",s);
 	return (0);
