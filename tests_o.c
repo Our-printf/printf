@@ -1,240 +1,240 @@
 #include "include/ft_printf.h"
 
-void		compil_test_d(int test, int i, int j, int k)
+void		compil_test_o(int test, int i, int j, int k)
 {
-	j = printf("%d\n>>%d<<\n", i, 0);
+	j = printf("%d\n>>%o<<\n", i, 0);
 	fflush(stdout);
-	k = ft_printf(">>%d<<", 0);
+	k = ft_printf(">>%o<<", 0);
 	fflush(stdout);
 	printf("				Diff = %d\n", (j - k - 3));
 	fflush(stdout);
 }
 
-void		compil_test_d1(int test, int j, int k)
+void		compil_test_o1(int test, int j, int k)
 {
-	j = printf(">>%d<<\n", 0);
+	j = printf(">>%o<<\n", 0);
 	fflush(stdout);
-	k = ft_printf(">>%d<<", 0);
+	k = ft_printf(">>%o<<", 0);
 	printf("				Diff = %d\n", (j - k - 1));
 	fflush(stdout);
 }
 
-void		compil_test_d1_1(int test, int j, int k)
+void		compil_test_o1_1(int test, int j, int k)
 {
-	j = printf(">>%dc et %d<<\n", "\0", test);
+	j = printf(">>%oc et %o<<\n", "\0", test);
 	fflush(stdout);
-	k = ft_printf(">>%dc et %d<<", "\0", test);
+	k = ft_printf(">>%oc et %o<<", "\0", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d2_0(int test, int j, int k)
+void		compil_test_o2_0(int test, int j, int k)
 {
-	j = printf(">>%.0d<<\n", test);
+	j = printf(">>%.0o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%.0d<<", test);
+	k = ft_printf(">>%.0o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d2_1(int test, int j, int k)
+void		compil_test_o2_1(int test, int j, int k)
 {
-	j = printf(">>%.5d<<\n", test);
+	j = printf(">>%.5o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%.5d<<", test);
+	k = ft_printf(">>%.5o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d2_2(int test, int j, int k)
+void		compil_test_o2_2(int test, int j, int k)
 {
-	j = printf(">>%.d<<\n", test);
+	j = printf(">>%.o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%.d<<", test);
+	k = ft_printf(">>%.o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d2_3(int test, int j, int k)
+void		compil_test_o2_3(int test, int j, int k)
 {
-	j = printf(">>%.34d<<\n", test);
+	j = printf(">>%.34o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%.34d<<", test);
+	k = ft_printf(">>%.34o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d2_4(int test, int j, int k)
+void		compil_test_o2_4(int test, int j, int k)
 {
-	j = printf(">>%.010d<<\n", test);
+	j = printf(">>%.010o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%.010d<<", test);
+	k = ft_printf(">>%.010o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d3_0(int test, int j, int k)
+void		compil_test_o3_0(int test, int j, int k)
 {
-	j = printf(">>%10d<<\n", test);
+	j = printf(">>%10o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%10d<<", test);
+	k = ft_printf(">>%10o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d3_1(int test, int j, int k)
+void		compil_test_o3_1(int test, int j, int k)
 {
-	j = printf(">>%0d<<\n", test);
+	j = printf(">>%0o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%0d<<", test);
+	k = ft_printf(">>%0o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d3_2(int test, int j, int k)
+void		compil_test_o3_2(int test, int j, int k)
 {
-	j = printf(">>%34d<<\n", test);
+	j = printf(">>%34o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%34d<<", test);
+	k = ft_printf(">>%34o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d3_3(int test, int j, int k)
+void		compil_test_o3_3(int test, int j, int k)
 {
-	j = printf(">>%-10d<<\n", test);
+	j = printf(">>%-10o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%-10d<<", test);
+	k = ft_printf(">>%-10o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d3_4(int test, int j, int k)
+void		compil_test_o3_4(int test, int j, int k)
 {
-	j = printf(">>%-30d<<\n", test);
+	j = printf(">>%-30o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%-30d<<", test);
+	k = ft_printf(">>%-30o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d3_5(int test, int j, int k)
+void		compil_test_o3_5(int test, int j, int k)
 {
-	j = printf(">>%20d et %15d<<\n", test, test);
+	j = printf(">>%20o et %15o<<\n", test, test);
 	fflush(stdout);
-	k = ft_printf(">>%20d et %15d<<", test, test);
+	k = ft_printf(">>%20o et %15o<<", test, test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d4_0(int test, int j, int k)
+void		compil_test_o4_0(int test, int j, int k)
 {
-	j = printf(">>%-30.1d<<\n", test);
+	j = printf(">>%-30.1o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%-30.1d<<", test);
+	k = ft_printf(">>%-30.1o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d4_1(int test, int j, int k)
+void		compil_test_o4_1(int test, int j, int k)
 {
-	j = printf(">>%-1.30d<<\n", test);
+	j = printf(">>%-1.30o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%-1.30d<<", test);
+	k = ft_printf(">>%-1.30o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d4_2(int test, int j, int k)
+void		compil_test_o4_2(int test, int j, int k)
 {
-	j = printf(">>%30.1d<<\n", test);
+	j = printf(">>%30.1o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%30.1d<<", test);
+	k = ft_printf(">>%30.1o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d4_3(int test, int j, int k)
+void		compil_test_o4_3(int test, int j, int k)
 {
-	j = printf(">>%1.30d<<\n", test);
+	j = printf(">>%1.30o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%1.30d<<", test);
+	k = ft_printf(">>%1.30o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d4_4(int test, int j, int k)
+void		compil_test_o4_4(int test, int j, int k)
 {
-	j = printf(">>%-d<<\n", test);
+	j = printf(">>%-o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%-d<<", test);
+	k = ft_printf(">>%-o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d4_5(int test, int j, int k)
+void		compil_test_o4_5(int test, int j, int k)
 {
-	j = printf(">>%-.30d<<\n", test);
+	j = printf(">>%-.30o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%-.30d<<", test);
+	k = ft_printf(">>%-.30o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d4_6(int test, int j, int k)
+void		compil_test_o4_6(int test, int j, int k)
 {
-	j = printf(">>%-.5d<<\n", test);
+	j = printf(">>%-.5o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%-.5d<<", test);
+	k = ft_printf(">>%-.5o<<", test);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d5_0(int test, int j, int k)
+void		compil_test_o5_0(int test, int j, int k)
 {
-	j = printf(">>%030d<<\n", test);
+	j = printf(">>%030o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%030d<<", test);
-	fflush(stdout);
-	printf("				Diff = %d\n", j - k - 1);
-	fflush(stdout);
-}
-
-void		compil_test_d5_1(int test, int j, int k)
-{
-	j = printf(">>%.05d<<\n", test);
-	fflush(stdout);
-	k = ft_printf(">>%.05d<<", test);
+	k = ft_printf(">>%030o<<", test);
 	fflush(stdout);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d5_2(int test, int j, int k)
+void		compil_test_o5_1(int test, int j, int k)
 {
-	j = printf(">>%05d<<\n", test);
+	j = printf(">>%.05o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%05d<<", test);
+	k = ft_printf(">>%.05o<<", test);
 	fflush(stdout);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d5_3(int test, int j, int k)
+void		compil_test_o5_2(int test, int j, int k)
 {
-	j = printf(">>%0.30d<<\n", test);
+	j = printf(">>%05o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%0.30d<<", test);
+	k = ft_printf(">>%05o<<", test);
 	fflush(stdout);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
 }
 
-void		compil_test_d5_4(int test, int j, int k)
+void		compil_test_o5_3(int test, int j, int k)
 {
-	j = printf(">>%-05d<<\n", test);
+	j = printf(">>%0.30o<<\n", test);
 	fflush(stdout);
-	k = ft_printf(">>%-05d<<", test);
+	k = ft_printf(">>%0.30o<<", test);
+	fflush(stdout);
+	printf("				Diff = %d\n", j - k - 1);
+	fflush(stdout);
+}
+
+void		compil_test_o5_4(int test, int j, int k)
+{
+	j = printf(">>%-05o<<\n", test);
+	fflush(stdout);
+	k = ft_printf(">>%-05o<<", test);
 	fflush(stdout);
 	printf("				Diff = %d\n", j - k - 1);
 	fflush(stdout);
@@ -242,7 +242,7 @@ void		compil_test_d5_4(int test, int j, int k)
 
 
 
-void		test_d(void)
+void		test_o(void)
 {
 	int i = 1;
 	int test;
@@ -253,35 +253,35 @@ void		test_d(void)
 	while (i < 2)
 	{
 		write (1, "\n", 1);
-		compil_test_d(test, 0, 0, 0);
-		compil_test_d1(test, i, 0);
-		compil_test_d1_1(test, i, 0);
-		compil_test_d2_0(test, 0, 0);
-		compil_test_d2_1(test, 0, 0);
-		compil_test_d2_2(test, 0, 0);
-		compil_test_d2_3(test, 0, 0);
-		compil_test_d2_4(test, 0, 0);
+		compil_test_o(test, 0, 0, 0);
+		compil_test_o1(test, i, 0);
+		compil_test_o1_1(test, i, 0);
+		compil_test_o2_0(test, 0, 0);
+		compil_test_o2_1(test, 0, 0);
+		compil_test_o2_2(test, 0, 0);
+		compil_test_o2_3(test, 0, 0);
+		compil_test_o2_4(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d3_0(test, 0, 0);
-		compil_test_d3_1(test, 0, 0);
-		compil_test_d3_2(test, 0, 0);
-		compil_test_d3_3(test, 0, 0);
-		compil_test_d3_4(test, 0, 0);
-		compil_test_d3_5(test, 0, 0);
+		compil_test_o3_0(test, 0, 0);
+		compil_test_o3_1(test, 0, 0);
+		compil_test_o3_2(test, 0, 0);
+		compil_test_o3_3(test, 0, 0);
+		compil_test_o3_4(test, 0, 0);
+		compil_test_o3_5(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d4_0(test, 0, 0);
-		compil_test_d4_1(test, 0, 0);
-		compil_test_d4_2(test, 0, 0);
-		compil_test_d4_3(test, 0, 0);
-		compil_test_d4_4(test, 0, 0);
-		compil_test_d4_5(test, 0, 0);
-		compil_test_d4_6(test, 0, 0);
+		compil_test_o4_0(test, 0, 0);
+		compil_test_o4_1(test, 0, 0);
+		compil_test_o4_2(test, 0, 0);
+		compil_test_o4_3(test, 0, 0);
+		compil_test_o4_4(test, 0, 0);
+		compil_test_o4_5(test, 0, 0);
+		compil_test_o4_6(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d5_0(test, 0, 0);
-		compil_test_d5_1(test, 0, 0);
-		compil_test_d5_2(test, 0, 0);
-		compil_test_d5_3(test, 0, 0);
-		compil_test_d5_4(test, 0, 0);
+		compil_test_o5_0(test, 0, 0);
+		compil_test_o5_1(test, 0, 0);
+		compil_test_o5_2(test, 0, 0);
+		compil_test_o5_3(test, 0, 0);
+		compil_test_o5_4(test, 0, 0);
 		i++;
 	}
 
@@ -292,35 +292,35 @@ void		test_d(void)
 	while (i < 2)
 	{
 		write (1, "\n", 1);
-		compil_test_d(test, 1, 0, 0);
-		compil_test_d1(test, i, 0);
-		compil_test_d1_1(test, i, 0);
-		compil_test_d2_0(test, 0, 0);
-		compil_test_d2_1(test, 0, 0);
-		compil_test_d2_2(test, 0, 0);
-		compil_test_d2_3(test, 0, 0);
-		compil_test_d2_4(test, 0, 0);
+		compil_test_o(test, 1, 0, 0);
+		compil_test_o1(test, i, 0);
+		compil_test_o1_1(test, i, 0);
+		compil_test_o2_0(test, 0, 0);
+		compil_test_o2_1(test, 0, 0);
+		compil_test_o2_2(test, 0, 0);
+		compil_test_o2_3(test, 0, 0);
+		compil_test_o2_4(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d3_0(test, 0, 0);
-		compil_test_d3_1(test, 0, 0);
-		compil_test_d3_2(test, 0, 0);
-		compil_test_d3_3(test, 0, 0);
-		compil_test_d3_4(test, 0, 0);
-		compil_test_d3_5(test, 0, 0);
+		compil_test_o3_0(test, 0, 0);
+		compil_test_o3_1(test, 0, 0);
+		compil_test_o3_2(test, 0, 0);
+		compil_test_o3_3(test, 0, 0);
+		compil_test_o3_4(test, 0, 0);
+		compil_test_o3_5(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d4_0(test, 0, 0);
-		compil_test_d4_1(test, 0, 0);
-		compil_test_d4_2(test, 0, 0);
-		compil_test_d4_3(test, 0, 0);
-		compil_test_d4_4(test, 0, 0);
-		compil_test_d4_5(test, 0, 0);
-		compil_test_d4_6(test, 0, 0);
+		compil_test_o4_0(test, 0, 0);
+		compil_test_o4_1(test, 0, 0);
+		compil_test_o4_2(test, 0, 0);
+		compil_test_o4_3(test, 0, 0);
+		compil_test_o4_4(test, 0, 0);
+		compil_test_o4_5(test, 0, 0);
+		compil_test_o4_6(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d5_0(test, 0, 0);
-		compil_test_d5_1(test, 0, 0);
-		compil_test_d5_2(test, 0, 0);
-		compil_test_d5_3(test, 0, 0);
-		compil_test_d5_4(test, 0, 0);
+		compil_test_o5_0(test, 0, 0);
+		compil_test_o5_1(test, 0, 0);
+		compil_test_o5_2(test, 0, 0);
+		compil_test_o5_3(test, 0, 0);
+		compil_test_o5_4(test, 0, 0);
 		i++;
 	}
 
@@ -332,36 +332,36 @@ void		test_d(void)
 	while (i < 2)
 	{
 		write (1, "\n", 1);
-		compil_test_d(test, 2, 0, 0);
-		compil_test_d1(test, i, 0);
-		compil_test_d1_1(test, i, 0);
-		compil_test_d2_0(test, 0, 0);
-		compil_test_d2_1(test, 0, 0);
-		compil_test_d2_2(test, 0, 0);
-		compil_test_d2_3(test, 0, 0);
-		compil_test_d2_4(test, 0, 0);
+		compil_test_o(test, 2, 0, 0);
+		compil_test_o1(test, i, 0);
+		compil_test_o1_1(test, i, 0);
+		compil_test_o2_0(test, 0, 0);
+		compil_test_o2_1(test, 0, 0);
+		compil_test_o2_2(test, 0, 0);
+		compil_test_o2_3(test, 0, 0);
+		compil_test_o2_4(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d3_0(test, 0, 0);
-		compil_test_d3_1(test, 0, 0);
-		compil_test_d3_2(test, 0, 0);
-		compil_test_d3_3(test, 0, 0);
-		compil_test_d3_4(test, 0, 0);
-		compil_test_d3_5(test, 0, 0);
+		compil_test_o3_0(test, 0, 0);
+		compil_test_o3_1(test, 0, 0);
+		compil_test_o3_2(test, 0, 0);
+		compil_test_o3_3(test, 0, 0);
+		compil_test_o3_4(test, 0, 0);
+		compil_test_o3_5(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d4_0(test, 0, 0);
-		compil_test_d4_1(test, 0, 0);
+		compil_test_o4_0(test, 0, 0);
+		compil_test_o4_1(test, 0, 0);
 		write (1, "\n", 1);
-		compil_test_d4_2(test, 0, 0);
-		compil_test_d4_3(test, 0, 0);
-		compil_test_d4_4(test, 0, 0);
-		compil_test_d4_5(test, 0, 0);
-		compil_test_d4_6(test, 0, 0);
+		compil_test_o4_2(test, 0, 0);
+		compil_test_o4_3(test, 0, 0);
+		compil_test_o4_4(test, 0, 0);
+		compil_test_o4_5(test, 0, 0);
+		compil_test_o4_6(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d5_0(test, 0, 0);
-		compil_test_d5_1(test, 0, 0);
-		compil_test_d5_2(test, 0, 0);
-		compil_test_d5_3(test, 0, 0);
-		compil_test_d5_4(test, 0, 0);
+		compil_test_o5_0(test, 0, 0);
+		compil_test_o5_1(test, 0, 0);
+		compil_test_o5_2(test, 0, 0);
+		compil_test_o5_3(test, 0, 0);
+		compil_test_o5_4(test, 0, 0);
 		i++;
 	}
 
@@ -372,35 +372,35 @@ void		test_d(void)
 	while (i < 2)
 	{
 		write (1, "\n", 1);
-		compil_test_d(test, 3, 0, 0);
-		compil_test_d1(test, i, 0);
-		compil_test_d1_1(test, i, 0);
-		compil_test_d2_0(test, 0, 0);
-		compil_test_d2_1(test, 0, 0);
-		compil_test_d2_2(test, 0, 0);
-		compil_test_d2_3(test, 0, 0);
-		compil_test_d2_4(test, 0, 0);
+		compil_test_o(test, 3, 0, 0);
+		compil_test_o1(test, i, 0);
+		compil_test_o1_1(test, i, 0);
+		compil_test_o2_0(test, 0, 0);
+		compil_test_o2_1(test, 0, 0);
+		compil_test_o2_2(test, 0, 0);
+		compil_test_o2_3(test, 0, 0);
+		compil_test_o2_4(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d3_0(test, 0, 0);
-		compil_test_d3_1(test, 0, 0);
-		compil_test_d3_2(test, 0, 0);
-		compil_test_d3_3(test, 0, 0);
-		compil_test_d3_4(test, 0, 0);
-		compil_test_d3_5(test, 0, 0);
+		compil_test_o3_0(test, 0, 0);
+		compil_test_o3_1(test, 0, 0);
+		compil_test_o3_2(test, 0, 0);
+		compil_test_o3_3(test, 0, 0);
+		compil_test_o3_4(test, 0, 0);
+		compil_test_o3_5(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d4_0(test, 0, 0);
-		compil_test_d4_1(test, 0, 0);
-		compil_test_d4_2(test, 0, 0);
-		compil_test_d4_3(test, 0, 0);
-		compil_test_d4_4(test, 0, 0);
-		compil_test_d4_5(test, 0, 0);
-		compil_test_d4_6(test, 0, 0);
+		compil_test_o4_0(test, 0, 0);
+		compil_test_o4_1(test, 0, 0);
+		compil_test_o4_2(test, 0, 0);
+		compil_test_o4_3(test, 0, 0);
+		compil_test_o4_4(test, 0, 0);
+		compil_test_o4_5(test, 0, 0);
+		compil_test_o4_6(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d5_0(test, 0, 0);
-		compil_test_d5_1(test, 0, 0);
-		compil_test_d5_2(test, 0, 0);
-		compil_test_d5_3(test, 0, 0);
-		compil_test_d5_4(test, 0, 0);
+		compil_test_o5_0(test, 0, 0);
+		compil_test_o5_1(test, 0, 0);
+		compil_test_o5_2(test, 0, 0);
+		compil_test_o5_3(test, 0, 0);
+		compil_test_o5_4(test, 0, 0);
 		i++;
 	}
 
@@ -412,35 +412,35 @@ void		test_d(void)
 	while (i < 2)
 	{
 		write (1, "\n", 1);
-		compil_test_d(test, 4, 0, 0);
-		compil_test_d1(test, i, 0);
-		compil_test_d1_1(test, i, 0);
-		compil_test_d2_0(test, 0, 0);
-		compil_test_d2_1(test, 0, 0);
-		compil_test_d2_2(test, 0, 0);
-		compil_test_d2_3(test, 0, 0);
-		compil_test_d2_4(test, 0, 0);
+		compil_test_o(test, 4, 0, 0);
+		compil_test_o1(test, i, 0);
+		compil_test_o1_1(test, i, 0);
+		compil_test_o2_0(test, 0, 0);
+		compil_test_o2_1(test, 0, 0);
+		compil_test_o2_2(test, 0, 0);
+		compil_test_o2_3(test, 0, 0);
+		compil_test_o2_4(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d3_0(test, 0, 0);
-		compil_test_d3_1(test, 0, 0);
-		compil_test_d3_2(test, 0, 0);
-		compil_test_d3_3(test, 0, 0);
-		compil_test_d3_4(test, 0, 0);
-		compil_test_d3_5(test, 0, 0);
+		compil_test_o3_0(test, 0, 0);
+		compil_test_o3_1(test, 0, 0);
+		compil_test_o3_2(test, 0, 0);
+		compil_test_o3_3(test, 0, 0);
+		compil_test_o3_4(test, 0, 0);
+		compil_test_o3_5(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d4_0(test, 0, 0);
-		compil_test_d4_1(test, 0, 0);
-		compil_test_d4_2(test, 0, 0);
-		compil_test_d4_3(test, 0, 0);
-		compil_test_d4_4(test, 0, 0);
-		compil_test_d4_5(test, 0, 0);
-		compil_test_d4_6(test, 0, 0);
+		compil_test_o4_0(test, 0, 0);
+		compil_test_o4_1(test, 0, 0);
+		compil_test_o4_2(test, 0, 0);
+		compil_test_o4_3(test, 0, 0);
+		compil_test_o4_4(test, 0, 0);
+		compil_test_o4_5(test, 0, 0);
+		compil_test_o4_6(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d5_0(test, 0, 0);
-		compil_test_d5_1(test, 0, 0);
-		compil_test_d5_2(test, 0, 0);
-		compil_test_d5_3(test, 0, 0);
-		compil_test_d5_4(test, 0, 0);
+		compil_test_o5_0(test, 0, 0);
+		compil_test_o5_1(test, 0, 0);
+		compil_test_o5_2(test, 0, 0);
+		compil_test_o5_3(test, 0, 0);
+		compil_test_o5_4(test, 0, 0);
 		i++;
 	}
 
@@ -451,35 +451,35 @@ void		test_d(void)
 	while (i < 2)
 	{
 		write (1, "\n", 1);
-		compil_test_d(test, 5, 0, 0);
-		compil_test_d1(test, i, 0);
-		compil_test_d1_1(test, i, 0);
-		compil_test_d2_0(test, 0, 0);
-		compil_test_d2_1(test, 0, 0);
-		compil_test_d2_2(test, 0, 0);
-		compil_test_d2_3(test, 0, 0);
-		compil_test_d2_4(test, 0, 0);
+		compil_test_o(test, 5, 0, 0);
+		compil_test_o1(test, i, 0);
+		compil_test_o1_1(test, i, 0);
+		compil_test_o2_0(test, 0, 0);
+		compil_test_o2_1(test, 0, 0);
+		compil_test_o2_2(test, 0, 0);
+		compil_test_o2_3(test, 0, 0);
+		compil_test_o2_4(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d3_0(test, 0, 0);
-		compil_test_d3_1(test, 0, 0);
-		compil_test_d3_2(test, 0, 0);
-		compil_test_d3_3(test, 0, 0);
-		compil_test_d3_4(test, 0, 0);
-		compil_test_d3_5(test, 0, 0);
+		compil_test_o3_0(test, 0, 0);
+		compil_test_o3_1(test, 0, 0);
+		compil_test_o3_2(test, 0, 0);
+		compil_test_o3_3(test, 0, 0);
+		compil_test_o3_4(test, 0, 0);
+		compil_test_o3_5(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d4_0(test, 0, 0);
-		compil_test_d4_1(test, 0, 0);
-		compil_test_d4_2(test, 0, 0);
-		compil_test_d4_3(test, 0, 0);
-		compil_test_d4_4(test, 0, 0);
-		compil_test_d4_5(test, 0, 0);
-		compil_test_d4_6(test, 0, 0);
+		compil_test_o4_0(test, 0, 0);
+		compil_test_o4_1(test, 0, 0);
+		compil_test_o4_2(test, 0, 0);
+		compil_test_o4_3(test, 0, 0);
+		compil_test_o4_4(test, 0, 0);
+		compil_test_o4_5(test, 0, 0);
+		compil_test_o4_6(test, 0, 0);
 		printf("----------------------------------------------------------\n");
-		compil_test_d5_0(test, 0, 0);
-		compil_test_d5_1(test, 0, 0);
-		compil_test_d5_2(test, 0, 0);
-		compil_test_d5_3(test, 0, 0);
-		compil_test_d5_4(test, 0, 0);
+		compil_test_o5_0(test, 0, 0);
+		compil_test_o5_1(test, 0, 0);
+		compil_test_o5_2(test, 0, 0);
+		compil_test_o5_3(test, 0, 0);
+		compil_test_o5_4(test, 0, 0);
 		i++;
 	}
 

@@ -6,18 +6,8 @@
 #include "../libft/libft.h"
 #include <stdio.h>
 #ifndef BUFF_SIZE
-# define BUFF_SIZE 4096
+# define BUFF_SIZE 142
 #endif
-
-typedef	struct		s_struct
-{
-	char			*tmp;
-	char			*cp_str;
-	int				t_int;
-	unsigned	int	*t_unsi_int;
-	char			*t_char;
-	void			*t_void;
-}					t_struct;
 
 typedef	struct			s_bool
 {
@@ -46,6 +36,7 @@ typedef	struct		s_print
 	int				k;
 	int				save_i;
 	int				length;
+	int				length_write;
 	t_bool			c_bool;
 }					t_print;
 
@@ -57,10 +48,14 @@ t_print				init_bool(t_print res);
 t_print				if_forest(char c, va_list ap, t_print res);
 t_print				ft_strcat_f(char *s1, t_print res,char c);
 t_print				check_true(char c, t_print res);
-void	itoa_base_static(long value, int base, char *str, int *i);
+void				itoa_base_static(long value, int base, char *str, int *i);
 
 /* Pour le pourcent d*/
-t_print		ft_stock_d(va_list ap, t_print res, int rsl, long long va);
+t_print		ft_stock_d(va_list ap, t_print res, intmax_t rsl, long long va);
+t_print		ft_stock_o(va_list ap, t_print res, intmax_t rsl, long long va);
+t_print		ft_stock_x(va_list ap, t_print res, intmax_t rsl, long long va);
+t_print		ft_stock_lx(va_list ap, t_print res, intmax_t rsl, long long va);
+void	itoa_base_static2(long value, int base, char *str, int *i);
 
 /* Pour le pourcent s */
 char				*width_neg(char *copy, char c, int w);
@@ -102,5 +97,8 @@ void				test_per(void);
 void				test_lc(void);
 void				test_ls(void);
 void				test_d(void);
+void				test_o(void);
+void				test_x(void);
+void				test_p(void);
 
 #endif

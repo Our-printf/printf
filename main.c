@@ -6,12 +6,13 @@
 /*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 13:29:24 by sgarcia           #+#    #+#             */
-/*   Updated: 2018/04/21 01:19:20 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/04/21 23:53:20 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/ft_printf.h"
 #include "locale.h"
+#include <limits.h>
 
 int main()
 {
@@ -42,10 +43,16 @@ int main()
 	   }
 
 
+*/
+//	test_o();
+//	test_p();
+//	test_x();
+	test_d();
+//	ft_printf("%d", 20);
+//	printf("%s", "abc");
 
 
-
-
+/*
 */
 //	setlocale(LC_ALL, "");
 
@@ -173,16 +180,8 @@ int main()
 		*/
 	//	int d = i;
 	//	char *s = "i";
-	//	test_s();
 	//	ft_printf("%.s\n", (char *)42);
-//		test_d();
-	//	test_lc();
-	//	test_ls();
-	//	test_s();
-	//	test_c();
 
-
-	//	test_per();
 
 	//	printf("%d", ft_printf("%s", "abc"));
 	/*
@@ -221,6 +220,8 @@ int main()
 		printf("%lC\n", L'臦');
 		printf("%llC\n", L'臦');
 */
+
+/*
 	int i;
 //	i = 012345;
 	i = -12345;
@@ -980,20 +981,154 @@ int main()
 		fflush(stdout);
 		ft_printf("%03.2d\n", 1);
 				printf("\n");
+
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+		printf("Chap 03\n");//CHAP 03
+		fflush(stdout);
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+
+		printf("%hd\n", 32768);
+		fflush(stdout);
+		ft_printf("%hd\n", 32768);
+				printf("\n");
+
+		printf("%hhd\n", 128);
+		fflush(stdout);
+		ft_printf("%hhd\n", 128);
+				printf("\n");
+
+		printf("%ld\n", 2147483648);
+		fflush(stdout);
+		ft_printf("%ld\n", 2147483648);
+				printf("\n");
+
+		printf("%lld\n", 9223372036854775807);
+		fflush(stdout);
+		ft_printf("%lld\n", 9223372036854775807);
+				printf("\n");
+
+		printf("%jd\n", 9223372036854775807);
+		fflush(stdout);
+		ft_printf("%jd\n", 9223372036854775807);
+				printf("\n");
+
+		printf("%zd\n", 4294967295);
+		fflush(stdout);
+		ft_printf("%zd\n", 4294967295);
+				printf("\n");
+
+		printf("--------------------------------------------\n");
+		fflush(stdout);
+
+		printf("A%lld\n", -9223372036854775808);
+		fflush(stdout);
+		ft_printf("B%lld\n", -9223372036854775808);
+				printf("\n");
+
+		printf("A%jd\n", -9223372036854775808);
+		fflush(stdout);
+		ft_printf("B%jd\n", -9223372036854775808);
+				printf("\n");
+
+		printf("A%D\n", LONG_MAX);
+		fflush(stdout);
+		ft_printf("B%D\n", LONG_MAX);
+				printf("\n");
+
+		printf("A%D\n", LONG_MIN);
+		fflush(stdout);
+		ft_printf("B%D\n", LONG_MIN);
+				printf("\n");
+
+
+
+
+
+
+
+
+
+		printf("%X\n", 42);
+		fflush(stdout);
+		ft_printf("%X\n", 42);
+				printf("\n");
+
+	test_d();
+
+		printf("%x\n", -42);
+		fflush(stdout);
+		ft_printf("%x\n", -42);
+				printf("\n");
+
+		printf("%x\n", -2);
+		fflush(stdout);
+		ft_printf("%x\n", -2);
+				printf("\n");
+
+*/
+
+
+		printf("%jx\n", -4294967296);
+		fflush(stdout);
+		ft_printf("%jx\n", -4294967296);
+				printf("\n");
+
+		printf("%#llx\n", 9223372036854775807);
+		fflush(stdout);
+		ft_printf("%#llx\n", 9223372036854775807);
+				printf("\n");
+
+		printf("%#-08x\n", 42);
+		fflush(stdout);
+		ft_printf("%#-08x\n", 42);
+				printf("\n");
+
+		printf("%#6o\n", 2500);
+		fflush(stdout);
+		ft_printf("%#6o\n", 2500);
+				printf("\n");
+
+		printf("%-#6o\n", 2500);
+		fflush(stdout);
+		ft_printf("%-#6o\n", 2500);
+				printf("\n");
+
+		printf("@moulitest: %#.o %#.0o\n", 0, 0);
+		fflush(stdout);
+		ft_printf("@moulitest: %#.o %#.0o\n", 0, 0);
+				printf("\n");
+
+		printf("%llu, %llu\n", 0, ULLONG_MAX);
+		fflush(stdout);
+		ft_printf("%llu, %llu\n", 0, ULLONG_MAX);
+				printf("\n");
+
+		printf("%zu, %zu\n", 0, ULLONG_MAX);
+		fflush(stdout);
+		ft_printf("%zu, %zu\n", 0, ULLONG_MAX);
+				printf("\n");
+
+		printf("{%030X}\n", 0xFFFF);
+		fflush(stdout);
+		ft_printf("{%030X}\n", 0xFFFF);
+				printf("\n");
+
+
+
+
+
 /*
 		printf();
 		fflush(stdout);
 		ft_printf();
 				printf("\n");
 
-		printf();
-		fflush(stdout);
-		ft_printf();
-				printf("\n");
+
 */
-
-
-		
 		
 		
 		

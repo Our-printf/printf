@@ -6,7 +6,7 @@
 /*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:40:23 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/04/20 16:12:15 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/04/21 23:39:56 by sgarcia          ###   ########.fr       */
 /*   Updated: 2018/02/28 17:51:54 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -23,12 +23,14 @@ t_print		if_forest(char c, va_list ap, t_print res)
 		else
 			res = stock_s(ap, res);
 	}
-	if (c == 'd' || c == 'D')
+	if (c == 'd' || c == 'D' || c == 'i')
 	{
-		if (c == 'd')
-			res = ft_stock_d(ap, res, 0, 0);
-		else
-			res = ft_stock_d(ap, res, 0, 0);
+		if (c == 'D')
+		{
+			res.c_bool.j = 1;
+			res.c_bool.specs = 1;
+		}
+		res = ft_stock_d(ap, res, 0, 0);
 	}
 	if (c == 'c' || c == 'C')
 	{
@@ -40,6 +42,17 @@ t_print		if_forest(char c, va_list ap, t_print res)
 	if (c == 'u' || c == 'U')
 	{
 			res = ft_stock_d(ap, res, 0, 0);
+	}
+	if (c == 'o' || c == 'O')
+	{
+			res = ft_stock_o(ap, res, 0, 0);
+	}
+	if (c == 'x' || c == 'X')
+	{
+		if (c == 'x')
+			res = ft_stock_x(ap, res, 0, 0);
+		if (c == 'X')
+			res = ft_stock_lx(ap, res, 0, 0);
 	}
 	if (c == '%')
 		res = stock_percent(res);
@@ -108,6 +121,7 @@ int			ft_printf(const char *str, ...)
 	res.i = 0;
 	res.k = 0;
 	res.length = 0;
+	res.length_write = 0;
 	va_start(ap, str);
 	ft_bzero(res.buf, BUFF_SIZE);
 	while (str[res.k])
@@ -122,8 +136,7 @@ int			ft_printf(const char *str, ...)
 		else
 			res.buf[res.length++] = str[res.k++];
 	}
-//	while (1){};
 	write(1, res.buf, res.length);
 	va_end(ap);
-	return (res.length);
+	return (res.length + res.length_write);
 }
