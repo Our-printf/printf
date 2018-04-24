@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/21 18:32:24 by rojaguen          #+#    #+#             */
-/*   Updated: 2017/11/27 14:54:29 by rojaguen         ###   ########.fr       */
+/*   Created: 2017/12/03 20:10:04 by sgarcia           #+#    #+#             */
+/*   Updated: 2017/12/04 16:32:03 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char *str;
+	char	*copy;
+	size_t	i;
 
-	if (s == NULL)
+	if (!s)
 		return (NULL);
-	if ((str = (char *)ft_strnew(len)) == NULL)
-		return (0);
-	while (start--)
-		s++;
-	ft_strlcat(str, s, len + 1);
-	return (str);
+	if (!(copy = ft_strnew(len)))
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		copy[i] = s[start + i];
+		i++;
+	}
+	copy[i] = '\0';
+	return (copy);
 }

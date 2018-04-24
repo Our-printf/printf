@@ -1,4 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_init_bool.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/24 13:24:19 by sgarcia           #+#    #+#             */
+/*   Updated: 2018/04/24 18:32:14 by sgarcia          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/ft_printf.h"
+
+t_print		init_struct(t_print res)
+{
+	res.i = 0;
+	res.length = 0;
+	res.length_write = 0;
+	ft_bzero(res.buf, BUFF_SIZE);
+	return (res);
+}
 
 t_print		init_bool(t_print res)
 {
@@ -15,4 +36,18 @@ t_print		init_bool(t_print res)
 	res.c_bool.width = 0;
 	res.c_bool.check = 0;
 	return (res);
+}
+
+char		*width(char *str, int size, int index, char c)
+{
+	int		i;
+
+	i = 0;
+	while (i < size)
+	{
+		str[index + i] = c;
+		i++;
+	}
+	str[index + i] = '\0';
+	return (str);
 }

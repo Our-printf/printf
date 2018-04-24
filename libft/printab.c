@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
+/*   printab.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/05 14:19:17 by rojaguen          #+#    #+#             */
-/*   Updated: 2017/09/06 15:21:55 by rojaguen         ###   ########.fr       */
+/*   Created: 2018/03/13 17:20:49 by sgarcia           #+#    #+#             */
+/*   Updated: 2018/03/13 17:25:07 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strlowcase(char *str)
+#include "libft.h"
+
+void	printab(char **tab)
 {
-	int i;
+	int		i;
+	int		j;
 
 	i = 0;
-	while (str[i])
+	j = 0;
+	while (tab[i])
 	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-			str[i] = str[i] + 32;
+		while (tab[i][j])
+		{
+			j++;
+		}
+		write(1, tab[i], j);
+		j = 0;
 		i++;
 	}
-	return (str);
 }

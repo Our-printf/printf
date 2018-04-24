@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/25 01:12:42 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/03/20 15:38:59 by sgarcia          ###   ########.fr       */
+/*   Created: 2017/12/03 14:24:42 by sgarcia           #+#    #+#             */
+/*   Updated: 2017/12/04 16:29:16 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_putstr(char const *s)
 {
-	int i;
+	size_t	i;
 
 	i = 0;
-	if (s != NULL)
+	if (s)
 	{
 		while (s[i])
 		{

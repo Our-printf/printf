@@ -3,87 +3,103 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/22 16:31:37 by rojaguen          #+#    #+#             */
-/*   Updated: 2017/11/27 15:12:10 by rojaguen         ###   ########.fr       */
+/*   Created: 2017/12/04 12:43:44 by sgarcia           #+#    #+#             */
+/*   Updated: 2017/12/11 17:40:33 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_find_space(char const str, char c)
+static	void	copy_words(char const *str, char c, char **copy)
 {
-	if (str == c || str == '\0')
-		return (1);
-	else
-		return (0);
-}
-
-static char		*ft_alloc_tab(char *tab, char const *str, char c)
-{
-	int i;
+	size_t	i;
+	size_t	len_words;
+	size_t	words;
 
 	i = 0;
-	while (ft_find_space(str[i], c) == 0)
-	{
-		tab[i] = str[i];
-		i++;
-	}
-	tab[i] = '\0';
-	return (tab);
-}
-
-static int		ft_count(char const *str, char c)
-{
-	int i;
-	int word;
-
-	i = 0;
-	word = 0;
+	words = 0;
 	while (str[i])
 	{
-		if (ft_find_space(str[i], c) == 0 && ft_find_space(str[i + 1], c) == 1)
-			word++;
-		i++;
-	}
-	return (word);
-}
-
-static int		ft_strlon(char const *str, char c)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != c && str[i] != '\0')
-		i++;
-	return (i);
-}
-
-char			**ft_strsplit(char const *s, char c)
-{
-	int		i;
-	int		j;
-	int		len;
-	char	**p;
-
-	i = 0;
-	if (!s || !c || !(p = (char**)malloc(sizeof(*p) * (ft_count(s, c) + 1))))
-		return (NULL);
-	j = 0;
-	while (s[i])
-	{
-		if (ft_find_space(s[i], c) == 0)
-		{
-			len = ft_strlon(s + i, c);
-			p[j] = (char*)malloc(sizeof(p) * (len + 1));
-			ft_alloc_tab(p[j], (s + i), c);
-			i = i + len;
-			j++;
-		}
-		else
+		while (str[i] && str[i] == c)
 			i++;
+		if (str[i] && str[i] != c)
+		{
+			len_words = 0;
+			while (str[i] && str[i] != c)
+			{
+				copy[words][len_words] = str[i];
+				i++;
+				len_words++;
+			}
+			words++;
+		}
 	}
-	p[j] = 0;
-	return (p);
+}
+
+static	void	lenght_words(char const *str, char c, char **copy)
+{
+	size_t	i;
+	size_t	len_words;
+	size_t	words;
+
+	i = 0;
+	words = 0;
+	while (str[i])
+	{
+		while (str[i] && str[i] == c)
+			i++;
+		if (str[i] && str[i] != c)
+		{
+			len_words = 0;
+			while (str[i] && str[i] != c)
+			{
+				i++;
+				len_words++;
+			}
+			copy[words] = ft_strnew(len_words);
+			words++;
+		}
+	}
+}
+
+static	int		count_words(char const *str, char c)
+{
+	size_t	i;
+	size_t	words;
+
+	i = 0;
+	words = 0;
+	while (str[i])
+	{
+		while (str[i] && str[i] == c)
+			i++;
+		if (str[i] && str[i] != c)
+		{
+			while (str[i] && str[i] != c)
+				i++;
+			words++;
+		}
+	}
+	return (words);
+}
+
+char			**ft_strsplit(char const *str, char c)
+{
+	size_t	i;
+	size_t	words;
+	char	**copy;
+
+	if (!str || !c)
+		return (NULL);
+	i = 0;
+	copy = NULL;
+	words = count_words(str, c);
+	if ((copy = (char **)malloc(sizeof(char *) * (words + 1))) == NULL)
+		return (NULL);
+	copy[words] = NULL;
+	lenght_words(str, c, copy);
+	copy_words(str, c, copy);
+	return (copy);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/11 16:33:15 by rojaguen          #+#    #+#             */
-/*   Updated: 2017/11/27 14:50:08 by rojaguen         ###   ########.fr       */
+/*   Created: 2017/12/01 21:35:22 by sgarcia           #+#    #+#             */
+/*   Updated: 2017/12/01 23:14:54 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,28 @@
 
 int		ft_atoi(const char *str)
 {
-	int i;
-	int var;
-	int sign;
+	int	i;
+	int	sign;
+	int	nb;
 
-	var = 0;
-	i = 0;
 	sign = 1;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r' ||
-			str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
+	nb = 0;
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign = -1;
+		if (str[i] == '+')
+			sign = 1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
 	{
-		var = (var * 10) + (str[i] - 48);
+		nb *= 10;
+		nb += (str[i] - 48);
 		i++;
 	}
-	return (var * sign);
+	return (nb * sign);
 }

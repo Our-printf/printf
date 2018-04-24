@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 20:48:55 by rojaguen          #+#    #+#             */
-/*   Updated: 2017/11/25 19:19:00 by rojaguen         ###   ########.fr       */
+/*   Created: 2017/12/02 16:19:34 by sgarcia           #+#    #+#             */
+/*   Updated: 2017/12/06 10:38:49 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,17 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char *d;
-	char *s;
+	t_u8 *temp_s;
+	t_u8 *temp_d;
 
-	d = dst;
-	s = (char*)src;
-	if (dst == src)
-		return (dst);
-	if (d > s)
+	temp_s = (t_u8 *)src;
+	temp_d = (t_u8 *)dst;
+	if (dst > src)
 	{
 		while (len--)
-			d[len] = s[len];
-		return (dst);
+			temp_d[len] = temp_s[len];
+		return (temp_d);
 	}
-	while (len--)
-		*d++ = *s++;
-	return (dst);
+	ft_memcpy(temp_d, temp_s, len);
+	return (temp_d);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/19 17:58:10 by rojaguen          #+#    #+#             */
-/*   Updated: 2017/11/25 02:39:46 by rojaguen         ###   ########.fr       */
+/*   Created: 2017/12/02 20:11:17 by sgarcia           #+#    #+#             */
+/*   Updated: 2017/12/02 21:07:04 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*shr;
-	size_t			i;
+	size_t	i;
+	t_u8	*copy;
+	t_u8	occ;
 
 	i = 0;
-	shr = (unsigned char*)s;
+	copy = (t_u8 *)s;
+	occ = c;
 	while (i < n)
 	{
-		if (*shr == (unsigned char)c)
-			return (shr);
-		shr++;
+		if (copy[i] == occ)
+			return (&copy[i]);
 		i++;
 	}
 	return (NULL);

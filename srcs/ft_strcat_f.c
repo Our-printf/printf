@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcat_f.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/28 18:47:54 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/04/22 00:05:07 by sgarcia          ###   ########.fr       */
+/*   Created: 2018/04/24 13:29:36 by sgarcia           #+#    #+#             */
+/*   Updated: 2018/04/24 16:23:54 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ t_print		ft_strcat_f(char *s1, t_print res, char c)
 			res.buf[res.length] = s1[i];
 			i++;
 			res.length++;
-			if (res.length == BUFF_SIZE - 1)
-				res = ft_clean(res);
 		}
 	}
 	else

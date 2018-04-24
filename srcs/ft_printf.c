@@ -3,15 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/20 22:40:23 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/04/21 23:39:56 by sgarcia          ###   ########.fr       */
-/*   Updated: 2018/02/28 17:51:54 by sgarcia          ###   ########.fr       */
+/*   Created: 2018/04/24 13:24:41 by sgarcia           #+#    #+#             */
+/*   Updated: 2018/04/24 18:32:19 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+t_print		if_forest2(char c, va_list ap, t_print res)
+{
+	if (c == 'x' || c == 'X')
+	{
+		if (c == 'x')
+			res = ft_stock_x(ap, res, 0, 0);
+		if (c == 'X')
+			res = ft_stock_lx(ap, res, 0, 0);
+	}
+	if (c == '%')
+		res = stock_percent(res);
+	res.c_bool.j = 1;
+	res.c_bool.specs = 1;
+	if (c == 'D')
+		res = ft_stock_d(ap, res, 0, 0);
+	if (c == 'p')
+	{
+		res.c_bool.sharp = 1;
+		res = ft_stock_p(ap, res, 0, 0);
+	}
+	if (c == 'O')
+		res = ft_stock_o(ap, res, 0, 0);
+	return (res);
+}
 
 t_print		if_forest(char c, va_list ap, t_print res)
 {
@@ -23,15 +47,8 @@ t_print		if_forest(char c, va_list ap, t_print res)
 		else
 			res = stock_s(ap, res);
 	}
-	if (c == 'd' || c == 'D' || c == 'i')
-	{
-		if (c == 'D')
-		{
-			res.c_bool.j = 1;
-			res.c_bool.specs = 1;
-		}
+	if (c == 'd' || c == 'i')
 		res = ft_stock_d(ap, res, 0, 0);
-	}
 	if (c == 'c' || c == 'C')
 	{
 		if (res.c_bool.l == 2 || c == 'C')
@@ -39,23 +56,9 @@ t_print		if_forest(char c, va_list ap, t_print res)
 		else
 			res = stock_c(ap, res);
 	}
-	if (c == 'u' || c == 'U')
-	{
-			res = ft_stock_d(ap, res, 0, 0);
-	}
-	if (c == 'o' || c == 'O')
-	{
-			res = ft_stock_o(ap, res, 0, 0);
-	}
-	if (c == 'x' || c == 'X')
-	{
-		if (c == 'x')
-			res = ft_stock_x(ap, res, 0, 0);
-		if (c == 'X')
-			res = ft_stock_lx(ap, res, 0, 0);
-	}
-	if (c == '%')
-		res = stock_percent(res);
+	if (c == 'o')
+		res = ft_stock_o(ap, res, 0, 0);
+	res = if_forest2(c, ap, res);
 	return (res);
 }
 
@@ -69,16 +72,18 @@ t_print		check_true(char c, t_print res)
 		return (res);
 	}
 	str = ft_memalloc(res.c_bool.width);
+	if (res.c_bool.neg == 1 && res.c_bool.width != -1)
+		res.c_bool.width++;
 	if (res.c_bool.zero == 1)
-		str = width_s2(str, '0', res.c_bool.width, 0);
+		str = width(str, res.c_bool.width - 1, 0, '0');
 	if (res.c_bool.zero == 0)
-		str = width_s2(str, ' ', res.c_bool.width, 0);
+		str = width(str, res.c_bool.width - 1, 0, ' ');
 	if (res.c_bool.neg == 1)
 	{
 		str[0] = c;
 		res.k++;
-		res.length++;
 	}
+	res.length++;
 	res = ft_strcat_f(str, res, 0);
 	ft_strdel(&str);
 	return (res);
@@ -118,12 +123,9 @@ int			ft_printf(const char *str, ...)
 
 	if (!str || str[0] == '\0')
 		return (0);
-	res.i = 0;
 	res.k = 0;
-	res.length = 0;
-	res.length_write = 0;
+	res = init_struct(res);
 	va_start(ap, str);
-	ft_bzero(res.buf, BUFF_SIZE);
 	while (str[res.k])
 	{
 		if (str[res.k] == '%')
@@ -134,9 +136,10 @@ int			ft_printf(const char *str, ...)
 			res.k--;
 		}
 		else
-			res.buf[res.length++] = str[res.k++];
+			res = ft_strcat_f(0, res, str[res.k++]);
 	}
 	write(1, res.buf, res.length);
 	va_end(ap);
+	ft_bzero(res.buf, BUFF_SIZE);
 	return (res.length + res.length_write);
 }

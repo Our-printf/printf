@@ -3,58 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/22 10:43:06 by rojaguen          #+#    #+#             */
-/*   Updated: 2017/11/27 15:11:19 by rojaguen         ###   ########.fr       */
+/*   Created: 2017/12/03 20:27:41 by sgarcia           #+#    #+#             */
+/*   Updated: 2017/12/11 15:14:35 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_i(char const *s)
+static	char	*emptystr(char *copy)
 {
-	int i;
-
-	i = 0;
-	while (s[i] == ' ' || s[i] == '\t' || s[i] == '\n')
-		i++;
-	return (i);
-}
-
-static int		ft_a(char const *s)
-{
-	int a;
-
-	a = ft_strlen(s) - 1;
-	while (s[a] == ' ' || s[a] == '\t' || s[a] == '\n')
-		a--;
-	return (a + 1);
+	if (!(copy = ft_strnew(0)))
+		return (NULL);
+	copy[0] = '\0';
+	return (copy);
 }
 
 char			*ft_strtrim(char const *s)
 {
-	char	*tab;
-	size_t	n;
-	size_t	a;
-	int		i;
+	size_t	i;
+	size_t	j;
+	size_t	k;
+	char	*copy;
 
-	n = 0;
 	i = 0;
-	if (s == NULL)
+	j = 0;
+	if (!s)
 		return (NULL);
-	n = ft_i(s);
-	a = ft_a(s);
-	if (a == 0)
-	{
-		tab = (char*)malloc(sizeof(char) * 1);
-		tab[0] = '\0';
-		return (tab);
-	}
-	if ((tab = (char*)ft_strnew(a - n)) == NULL)
-		return (0);
-	while (n < a && a != 1)
-		tab[i++] = s[n++];
-	tab[i] = '\0';
-	return (tab);
+	k = ft_strlen(s) - 1;
+	while (s[j] && (s[j] == ' ' || s[j] == '\n' || s[j] == '\t'))
+		j++;
+	while (s[k] && (s[k] == ' ' || s[k] == '\n' || s[k] == '\t'))
+		k--;
+	copy = NULL;
+	if (j >= k + 1)
+		return (copy = emptystr(copy));
+	if (!(copy = ft_strnew((k + 1) - j)))
+		return (NULL);
+	while (j < k + 1)
+		copy[i++] = s[j++];
+	copy[i] = '\0';
+	return (copy);
 }

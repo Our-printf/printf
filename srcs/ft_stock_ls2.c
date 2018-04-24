@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_stock_ls2.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/24 13:27:09 by sgarcia           #+#    #+#             */
+/*   Updated: 2018/04/24 16:10:59 by sgarcia          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
@@ -22,6 +33,8 @@ t_print		strcat_point_static(t_print res, char c, int size)
 	i = 0;
 	while (i < size)
 	{
+		if (res.length == BUFF_SIZE - 1)
+			res = ft_clean(res);
 		res.buf[res.length] = c;
 		res.length++;
 		i++;

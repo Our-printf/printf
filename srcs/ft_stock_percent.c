@@ -6,7 +6,7 @@
 /*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/27 21:41:50 by sgarcia           #+#    #+#             */
-/*   Updated: 2018/04/05 09:49:23 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/04/24 11:25:02 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_print		strcat_percent(char *str, t_print res)
 	i = 0;
 	while (i < res.c_bool.width)
 	{
+		if (res.length == BUFF_SIZE - 1)
+			res = ft_clean(res);
 		res.buf[res.length] = str[i];
 		i++;
 		res.length++;

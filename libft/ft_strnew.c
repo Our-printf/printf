@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/20 16:36:17 by rojaguen          #+#    #+#             */
-/*   Updated: 2017/11/25 22:55:41 by rojaguen         ###   ########.fr       */
+/*   Created: 2017/12/03 16:35:00 by sgarcia           #+#    #+#             */
+/*   Updated: 2017/12/03 16:38:24 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 char	*ft_strnew(size_t size)
 {
-	return ((char *)ft_memalloc(size + 1));
+	char	*str;
+
+	str = ft_memalloc(size);
+	return (str);
 }

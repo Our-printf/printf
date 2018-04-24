@@ -6,7 +6,7 @@
 /*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 15:45:01 by sgarcia           #+#    #+#             */
-/*   Updated: 2018/04/18 13:09:29 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/04/24 13:27:01 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,21 @@ char		*mall_size_of_s_unicode(wchar_t *tmp)
 {
 	char	*str;
 	int		i;
+	int		j;
 
 	i = 0;
-	while (tmp[i])
+	j = 0;
+	while (tmp[j])
 	{
-		if (tmp[i] < 128)
+		if (tmp[j] < 128)
 			i++;
-		else if (tmp[i] < 2048)
+		else if (tmp[j] < 2048)
 			i += 2;
-		else if (tmp[i] < 65536)
+		else if (tmp[j] < 65536)
 			i += 3;
-		else if (tmp[i] < 2097152)
+		else if (tmp[j] < 2097152)
 			i += 4;
+		j++;
 	}
 	str = ft_memalloc(i + 1);
 	str[i] = '\0';
@@ -81,7 +84,7 @@ t_print		stock_ls(va_list ap, t_print res, int i)
 			i++;
 		}
 	}
-	if (res.c_bool.point >= 0)
+	if (res.c_bool.point >= 0 && res.c_bool.point < (int)ft_strlen(copy))
 		copy = preci_ls(copy, res);
 	res = width_ls(copy, res);
 	if (tmp != NULL)

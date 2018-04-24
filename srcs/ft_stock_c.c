@@ -6,7 +6,7 @@
 /*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 15:45:01 by sgarcia           #+#    #+#             */
-/*   Updated: 2018/04/21 23:06:44 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/04/24 11:20:03 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_print		strcat_c(char *str, t_print res, char c)
 	i = 0;
 	while (i < res.c_bool.width)
 	{
+		if (res.length == BUFF_SIZE - 1)
+			res = ft_clean(res);
 		res.buf[res.length] = str[i];
 		i++;
 		res.length++;

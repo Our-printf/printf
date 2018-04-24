@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/21 15:52:08 by rojaguen          #+#    #+#             */
-/*   Updated: 2017/11/25 18:28:32 by rojaguen         ###   ########.fr       */
+/*   Created: 2017/12/06 10:21:17 by sgarcia           #+#    #+#             */
+/*   Updated: 2017/12/06 10:39:50 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,21 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*str;
-	int		i;
+	size_t	i;
+	size_t	j;
+	char	*copy;
 
 	i = 0;
-	if (s == NULL || *f == NULL)
-		return (0);
-	while (s[i])
-		i++;
-	if ((str = (char *)malloc(sizeof(*str) * (i + 1))) == NULL)
-		return (0);
-	i = 0;
-	while (s[i])
+	if (!s)
+		return (NULL);
+	j = ft_strlen(s);
+	copy = ft_strnew(j);
+	if (!(copy = ft_strdup(s)))
+		return (NULL);
+	while (copy[i])
 	{
-		str[i] = f(i, s[i]);
+		copy[i] = f(i, copy[i]);
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	return (copy);
 }

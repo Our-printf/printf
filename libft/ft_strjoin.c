@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <rojaguen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/21 20:03:24 by rojaguen          #+#    #+#             */
-/*   Updated: 2017/11/26 21:21:19 by rojaguen         ###   ########.fr       */
+/*   Created: 2017/12/03 19:33:26 by sgarcia           #+#    #+#             */
+/*   Updated: 2018/02/07 13:49:41 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,26 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
-	char	*tab;
+	size_t	i;
+	size_t	j;
+	char	*str;
 
-	if (s1 == NULL && s2 == NULL)
-		return (ft_strnew(0));
-	else if (s1 == NULL)
-		return (ft_strdup(s2));
-	else if (s2 == NULL)
-		return (ft_strdup(s1));
-	i = ft_strlen(s1) + ft_strlen(s2);
-	if ((tab = (char*)malloc(sizeof(tab) * (i + 1))) == NULL)
-		return (0);
 	i = 0;
+	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	if (!(str = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
+		return (NULL);
 	while (s1[i])
 	{
-		tab[i] = s1[i];
+		str[i] = s1[i];
 		i++;
 	}
-	while (s2[i - ft_strlen(s1)])
+	while (s2[j])
 	{
-		tab[i] = s2[i - ft_strlen(s1)];
-		i++;
+		str[i + j] = s2[j];
+		j++;
 	}
-	tab[i] = '\0';
-	return (tab);
+	str[i + j] = '\0';
+	return (str);
 }

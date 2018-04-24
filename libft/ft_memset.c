@@ -6,23 +6,25 @@
 /*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 18:23:40 by sgarcia           #+#    #+#             */
-/*   Updated: 2018/03/19 11:38:26 by sgarcia          ###   ########.fr       */
+/*   Updated: 2017/12/02 20:08:01 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_memset(char *b, int c, int len)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	char	chara;
+	t_u8	chara;
+	t_u8	*copy;
 
 	chara = c;
+	copy = b;
 	if (len == 0)
 		return (b);
 	while (len > 0)
 	{
-		b[len - 1] = chara;
+		copy[len - 1] = chara;
 		len--;
 	}
-	return (b);
+	return (copy);
 }

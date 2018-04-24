@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_stock_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/22 00:00:56 by rojaguen          #+#    #+#             */
-/*   Updated: 2018/04/18 13:07:32 by sgarcia          ###   ########.fr       */
+/*   Created: 2018/04/24 13:29:02 by sgarcia           #+#    #+#             */
+/*   Updated: 2018/04/24 13:29:08 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char		*width_neg(char *copy, char c, int w)
 	char	*str;
 
 	j = 0;
-	str = ft_memalloc(w);
+	str = ft_memalloc(w + 1);
 	while (copy[j])
 	{
 		str[j] = copy[j];
@@ -38,7 +38,7 @@ char		*width_s2(char *copy, char c, int w, int len)
 
 	i = 0;
 	j = 0;
-	str = ft_memalloc(w);
+	str = ft_memalloc(w + 1);
 	while (i < (w - len))
 		str[i++] = c;
 	while (copy[j] && i + j < w)
@@ -102,7 +102,7 @@ t_print		stock_s(va_list ap, t_print res)
 		return (res);
 	}
 	copy = ft_strdup(tmp);
-	if (res.c_bool.point > 0)
+	if (res.c_bool.point > 0 && res.c_bool.point < (int)ft_strlen(copy))
 		copy = preci_s(copy, res);
 	if (res.c_bool.width > 0)
 		copy = width_s(copy, res);

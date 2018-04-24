@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   first_occ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rojaguen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/05 15:17:02 by rojaguen          #+#    #+#             */
-/*   Updated: 2017/12/05 15:17:09 by rojaguen         ###   ########.fr       */
+/*   Created: 2018/02/07 10:51:31 by sgarcia           #+#    #+#             */
+/*   Updated: 2018/02/07 10:54:48 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strupcase(char *str)
+#include "libft.h"
+
+int		first_occ(char *str, char c)
 {
-	int i;
+	int				i;
 
 	i = 0;
+	if (!str)
+		return (-1);
+	if (str[i] == c)
+		return (0);
 	while (str[i])
 	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-			str[i] = str[i] - 32;
+		if (str[i] == c)
+			return (i);
 		i++;
+		if (c == '\0' && str[i] == '\0')
+			return (i);
 	}
-	return (str);
+	return (-1);
 }

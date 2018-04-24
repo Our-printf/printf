@@ -1,79 +1,55 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_stock_lx.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/24 13:27:30 by sgarcia           #+#    #+#             */
+/*   Updated: 2018/04/24 16:20:07 by sgarcia          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/ft_printf.h"
 
-intmax_t	static	ft_specs(t_print res, intmax_t va)
+uintmax_t		ft_specs(t_print res, uintmax_t va)
 {
-	intmax_t	rsl;
+	uintmax_t	rsl;
 
 	rsl = 0;
 	if (res.c_bool.h == 1)
-		rsl = (signed char)va;
+		rsl = (unsigned char)va;
 	else if (res.c_bool.h == 2)
-		rsl = (short int)va;
+		rsl = (unsigned short int)va;
 	else if (res.c_bool.l == 1)
-		rsl = (long long int)va;
+		rsl = (unsigned long long int)va;
 	else if (res.c_bool.l == 2)
-		rsl = (long)va;
+		rsl = (unsigned long)va;
 	else if (res.c_bool.j == 1)
-		rsl = (intmax_t)va;
+		rsl = (uintmax_t)va;
 	else if (res.c_bool.z == 1)
 		rsl = (size_t)va;
 	else
-		rsl = (int)va;
+		rsl = (unsigned int)va;
 	return (rsl);
 }
 
-t_print		static	strcat_buff(char *str, t_print res)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-			res.buf[res.length++] = str[i++];
-	return (res);
-}
-
-void	static	strcat_width(char *str, int len, char c, int *index)
-{
-	int		i;
-
-	i = 0;
-	while (i < len)
-	{
-		str[*index] = c;
-		*index += 1;
-		i++;
-	}
-}
-
-int		static	nbr_len2(intmax_t nbr)
-{
-	intmax_t	i;
-
-	i = 0;
-	while (nbr / 16 > 0)
-	{
-		nbr /= 16;
-		i++;
-	}
-	return (i + 1);
-}
-
-int		static	nbr_len(intmax_t nbr, t_print res)
+static	int		nbr_len(uintmax_t nbr, t_print res)
 {
 	int			i;
 	int			j;
-	intmax_t	tmp; 
+	uintmax_t	tmp;
 
 	tmp = nbr;
 	i = 0;
 	j = 0;
-	if (nbr < 0)
+	if ((res.c_bool.space == 1 || res.c_bool.pos == 1 || res.c_bool.sharp == 1)
+			&& nbr != 0)
 	{
-		nbr = -nbr;
+		if (res.c_bool.sharp == 1)
+			i++;
 		i++;
 	}
-	else if (res.c_bool.space == 1 || res.c_bool.pos == 1)
-		i++;
 	while (nbr / 16 > 0)
 	{
 		nbr /= 16;
@@ -86,7 +62,7 @@ int		static	nbr_len(intmax_t nbr, t_print res)
 	return (j + i);
 }
 
-void	static	sort_order_int_zero(char *str, t_print res, intmax_t va, int len)
+static	void	sort_order_zero(char *str, t_print res, uintmax_t va, int len)
 {
 	int		index;
 
@@ -94,108 +70,64 @@ void	static	sort_order_int_zero(char *str, t_print res, intmax_t va, int len)
 	if ((len < res.c_bool.width && res.c_bool.neg == 0 && res.c_bool.zero == 0)
 				|| (res.c_bool.point >= 0 && res.c_bool.neg == 0))
 		strcat_width(str, (res.c_bool.width - len), ' ', &index);
-	if (res.c_bool.pos == 1)
-		str[index++] = '+';
-	else if (res.c_bool.space == 1)
-		str[index++] = ' ';
+	if (res.c_bool.sharp == 1 && va != 0)
+	{
+		str[index++] = '0';
+		str[index++] = 'X';
+	}
 	if (len < res.c_bool.width && res.c_bool.zero == 1 && res.c_bool.neg == 0
 			&& res.c_bool.point == -1)
 		strcat_width(str, (res.c_bool.width - len), '0', &index);
 	else if (res.c_bool.point >= 0)
-		strcat_width(str, (res.c_bool.point - nbr_len2(va)), '0', &index);
+		strcat_width(str, (res.c_bool.point - nbr_len2(va, 16)), '0', &index);
 	if (res.c_bool.point != 0)
 		str[index++] = '0';
 	if (len < res.c_bool.width && res.c_bool.neg == 1)
 		strcat_width(str, (res.c_bool.width - len), ' ', &index);
 }
 
-void	static	sort_order_int_pos(char *str, t_print res, intmax_t va, int len)
+static	void	sort_order_pos(char *str, t_print res, uintmax_t va, int len)
 {
 	int		index;
 
 	index = 0;
-//	printf(" len = %d   str = |%s|  \n", len, str);
 	if ((len < res.c_bool.width && res.c_bool.neg == 0 && res.c_bool.zero == 0)
 	|| (res.c_bool.point >= 0 && res.c_bool.neg == 0))
 		strcat_width(str, (res.c_bool.width - len), ' ', &index);
-	if (res.c_bool.pos == 1)
-		str[index++] = '+';
-	else if (res.c_bool.space == 1)
-		str[index++] = ' ';
-	if (len < res.c_bool.width && res.c_bool.zero == 1 && res.c_bool.neg == 0
-			&& res.c_bool.point == -1)
-		strcat_width(str, (res.c_bool.width - len), '0', &index);
-	else if (res.c_bool.point >= 0)
-		strcat_width(str, (res.c_bool.point - nbr_len2(va)), '0', &index);
-	itoa_base_static2(va, 16, str, &index);
-	if (len < res.c_bool.width && res.c_bool.neg == 1)
-		strcat_width(str, (res.c_bool.width - len), ' ', &index);
-}
-
-t_print	static	sort_intmax(char *str, t_print res, intmax_t va, int *index)
-{
-	char	intmin[] = "9223372036854775808";
-	int		i;
-
-	i = 0;
-	if ((*index) == 0 && res.c_bool.check == 0)
-		va++;
-	else
+	if (res.c_bool.sharp == 1 && va != 0)
 	{
-		while (i < 19)
-		{
-			str[*index] = intmin[i];
-			i++;
-			*index += 1;
-		}
+		str[index++] = '0';
+		str[index++] = 'X';
 	}
-	res.c_bool.check = 1;
-	return (res);
-}
-
-
-void	static	sort_order_int_neg(char *str, t_print res, intmax_t va, int len)
-{
-	int		index;
-
-	index = 0;
-	if (va == -9223372036854775807 - 1)
-		res = sort_intmax(str, res, va, &index);
-	va = -va;
-	if ((len < res.c_bool.width && res.c_bool.neg == 0 && res.c_bool.zero == 0)
-	|| (res.c_bool.point >= 0 && res.c_bool.zero == 1 && res.c_bool.neg == 0))
-		strcat_width(str, (res.c_bool.width - len), ' ', &index);
 	if (len < res.c_bool.width && res.c_bool.zero == 1 && res.c_bool.neg == 0
 			&& res.c_bool.point == -1)
 		strcat_width(str, (res.c_bool.width - len), '0', &index);
 	else if (res.c_bool.point >= 0)
-		strcat_width(str, (res.c_bool.point - nbr_len2(va)), '0', &index);
-	if (res.c_bool.check == 1)
-		res = sort_intmax(str, res, va, &index);
-	else
-		itoa_base_static2(va, 16, str, &index);
+		strcat_width(str, (res.c_bool.point - nbr_len2(va, 16)), '0', &index);
+	itoa_base_maj(va, 16, str, &index);
 	if (len < res.c_bool.width && res.c_bool.neg == 1)
 		strcat_width(str, (res.c_bool.width - len), ' ', &index);
 }
 
-t_print		ft_stock_lx(va_list ap, t_print res, intmax_t rsl, long long va)
+t_print			ft_stock_lx(va_list ap, t_print res, uintmax_t rsl,
+		unsigned long long va)
 {
-	char		str[32 + res.c_bool.width + res.c_bool.point];
+	char		*str;
 	int			len;
 
-	va = va_arg(ap, intmax_t);
-	rsl = (int)va;
+	va = va_arg(ap, uintmax_t);
+	rsl = (unsigned int)va;
 	res.c_bool.check = 0;
+	str = ft_memalloc(32 + res.c_bool.width + res.c_bool.point);
 	if (res.c_bool.specs == 1)
 		rsl = ft_specs(res, va);
 	len = nbr_len(rsl, res);
 	ft_bzero(str, 32 + res.c_bool.width + res.c_bool.point);
-	if (rsl < 0)
-		sort_order_int_neg(str, res, rsl, len - 1);
 	if (rsl > 0)
-		sort_order_int_pos(str, res, rsl, len);
+		sort_order_pos(str, res, rsl, len);
 	if (rsl == 0)
-		sort_order_int_zero(str, res, rsl, len);
+		sort_order_zero(str, res, rsl, len);
 	res = strcat_buff(str, res);
+	ft_strdel(&str);
 	return (res);
 }

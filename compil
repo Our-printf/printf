@@ -1,3 +1,2 @@
-gcc srcs/*.c main.c libft/libft.a tests_o.c tests_d.c tests_x.c tests_p.c
-
+gcc srcs/*.c ../main.c libft/libft.a ../tests_o.c ../tests_d.c ../tests_x.c ../tests_p.c ../tests_lx.c ../tests_lp.c ../tests_ls.c ../tests_s.c
 ./a.out
