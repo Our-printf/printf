@@ -6,7 +6,7 @@
 /*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 13:54:30 by sgarcia           #+#    #+#             */
-/*   Updated: 2018/04/24 18:25:51 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/04/28 14:11:12 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef	struct		s_print
 	t_bool			c_bool;
 }					t_print;
 
+int					ft_printf(const char *str, ...);
 t_print				check_flag(const char *str, t_print res, int i);
 t_print				flag(const char *str, t_print res);
 t_print				flag_relou(const char *str, t_print res);
@@ -111,5 +112,19 @@ t_print				ft_stock_x(va_list ap, t_print res, uintmax_t rsl,
 		unsigned long long va);
 t_print				ft_strcat_f(char *s1, t_print res, char c);
 t_print				ft_clean(t_print res);
+t_print				ft_stock_u(va_list ap, t_print res, intmax_t rsl,
+		intmax_t va);
+t_print				ft_stock_lu(va_list ap, t_print res, intmax_t rsl,
+		uintmax_t va);
+void				sort_order_posi(char *str, t_print res,
+		intmax_t va, int len);
+void				sort_order_negi(char *str, t_print res,
+		intmax_t va, int len);
+char				*ft_itoa_cast(unsigned long n, char *p,
+		int *a, t_print res);
+char				*ft_itoa_cast_lu(uintmax_t n, char *p, int *a,
+		t_print res);
+void				sort_order_zeroi(char *str, t_print res,
+		intmax_t va, int len);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 13:25:19 by sgarcia           #+#    #+#             */
-/*   Updated: 2018/04/24 16:19:35 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/05/02 12:06:40 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-intmax_t		ft_specs_int(t_print res, intmax_t va)
+intmax_t	ft_specs_int(t_print res, intmax_t va)
 {
 	intmax_t	rsl;
 
@@ -35,7 +35,7 @@ intmax_t		ft_specs_int(t_print res, intmax_t va)
 	return (rsl);
 }
 
-static	void	sort_order_zero(char *str, t_print res, intmax_t va, int len)
+void		sort_order_zeroi(char *str, t_print res, intmax_t va, int len)
 {
 	int		index;
 
@@ -58,7 +58,7 @@ static	void	sort_order_zero(char *str, t_print res, intmax_t va, int len)
 		strcat_width(str, (res.c_bool.width - len), ' ', &index);
 }
 
-static	void	sort_order_pos(char *str, t_print res, intmax_t va, int len)
+void		sort_order_posi(char *str, t_print res, intmax_t va, int len)
 {
 	int		index;
 
@@ -80,7 +80,7 @@ static	void	sort_order_pos(char *str, t_print res, intmax_t va, int len)
 		strcat_width(str, (res.c_bool.width - len), ' ', &index);
 }
 
-static	void	sort_order_neg(char *str, t_print res, intmax_t va, int len)
+void		sort_order_negi(char *str, t_print res, intmax_t va, int len)
 {
 	int		index;
 
@@ -119,11 +119,11 @@ t_print			ft_stock_d(va_list ap, t_print res, intmax_t rsl, long long va)
 	len = nbr_len_int(rsl, res);
 	ft_bzero(str, 32 + res.c_bool.width + res.c_bool.point);
 	if (rsl < 0)
-		sort_order_neg(str, res, rsl, len);
+		sort_order_negi(str, res, rsl, len);
 	if (rsl > 0)
-		sort_order_pos(str, res, rsl, len);
+		sort_order_posi(str, res, rsl, len);
 	if (rsl == 0)
-		sort_order_zero(str, res, rsl, len);
+		sort_order_zeroi(str, res, rsl, len);
 	res = strcat_buff(str, res);
 	ft_strdel(&str);
 	return (res);

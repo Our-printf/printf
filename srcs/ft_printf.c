@@ -6,13 +6,13 @@
 /*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 13:24:41 by sgarcia           #+#    #+#             */
-/*   Updated: 2018/04/24 18:32:19 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/04/28 11:48:49 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-t_print		if_forest2(char c, va_list ap, t_print res)
+static	t_print		if_forest2(char c, va_list ap, t_print res)
 {
 	if (c == 'x' || c == 'X')
 	{
@@ -32,12 +32,13 @@ t_print		if_forest2(char c, va_list ap, t_print res)
 		res.c_bool.sharp = 1;
 		res = ft_stock_p(ap, res, 0, 0);
 	}
+	res.c_bool.h = 0;
 	if (c == 'O')
 		res = ft_stock_o(ap, res, 0, 0);
 	return (res);
 }
 
-t_print		if_forest(char c, va_list ap, t_print res)
+static	t_print		if_forest(char c, va_list ap, t_print res)
 {
 	res.length++;
 	if (c == 's' || c == 'S')
@@ -58,11 +59,15 @@ t_print		if_forest(char c, va_list ap, t_print res)
 	}
 	if (c == 'o')
 		res = ft_stock_o(ap, res, 0, 0);
+	if (c == 'u')
+		res = ft_stock_u(ap, res, 0, 0);
+	if (c == 'U')
+		res = ft_stock_lu(ap, res, 0, 0);
 	res = if_forest2(c, ap, res);
 	return (res);
 }
 
-t_print		check_true(char c, t_print res)
+static	t_print		check_true(char c, t_print res)
 {
 	char	*str;
 
@@ -89,7 +94,7 @@ t_print		check_true(char c, t_print res)
 	return (res);
 }
 
-t_print		distrib(const char *str, va_list ap, t_print res)
+static	t_print		distrib(const char *str, va_list ap, t_print res)
 {
 	res.save_i = res.k;
 	if (str[res.k] == '\0')
@@ -116,7 +121,7 @@ t_print		distrib(const char *str, va_list ap, t_print res)
 	return (res);
 }
 
-int			ft_printf(const char *str, ...)
+int					ft_printf(const char *str, ...)
 {
 	va_list		ap;
 	t_print		res;

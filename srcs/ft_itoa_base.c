@@ -6,7 +6,7 @@
 /*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 13:24:27 by sgarcia           #+#    #+#             */
-/*   Updated: 2018/04/24 14:07:07 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/04/28 14:11:46 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	itoa_base_static(intmax_t value, int base, char *str, int *i)
 {
 	char	*base_str;
 
+	printf ("------va = ||%d|| str = ||%s||\n", value, str);
+	fflush(stdout);
 	base_str = "0123456789abcdef";
 	if (value < 0 && base == 10)
 		value = -value;

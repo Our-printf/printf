@@ -6,7 +6,7 @@
 /*   By: sgarcia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 13:24:19 by sgarcia           #+#    #+#             */
-/*   Updated: 2018/04/24 18:32:14 by sgarcia          ###   ########.fr       */
+/*   Updated: 2018/04/28 13:28:45 by sgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_print		init_bool(t_print res)
 	res.c_bool.point = -1;
 	res.c_bool.width = 0;
 	res.c_bool.check = 0;
+	res.c_bool.specs = 0;
 	return (res);
 }
 
